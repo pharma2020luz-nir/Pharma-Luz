@@ -1241,7 +1241,25 @@ app.use(
     express.static(uploadDirectory)
 );
 
+// ==================================================
+// SERVE PHARMA LUZ WEBSITE
+// ==================================================
 
+const websiteDirectory = path.join(__dirname, "..");
+
+app.use(
+    express.static(websiteDirectory)
+);
+
+// Main website
+app.get("/", (req, res) => {
+    res.sendFile(
+        path.join(
+            websiteDirectory,
+            "Pharma Luz ltd.html"
+        )
+    );
+});
 // ==================================================
 // ERROR HANDLER
 // ==================================================
