@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="Luz.jpeg">
+    <link rel="shortcut icon" type="image/png" href="Luz.jpeg">
+
+    <title>Pharma Luz Admin Login</title>
+
+<meta name="description"
+      content="Secure Pharma Luz Ltd administrator login portal">
+
+<link rel="icon" href="./Luz.jpeg">
+
+<style>
+    :root {
+        --green: #16a36a;
+        --green-light: #20c982;
+        --blue: #1687d9;
+        --blue-light: #39a9f2;
+
+        --bg: #07100f;
+        --bg-secondary: #0b1716;
+        --card: #101f1d;
+        --card-light: #142724;
+
+        --text: #f3faf7;
+        --muted: #91aaa4;
+        --border: rgba(255,255,255,.09);
+
+        --danger: #ef5b68;
+        --warning: #e5ae45;
+
+        --shadow:
+            0 25px 70px rgba(0,0,0,.45);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        min-height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family:
+            Inter,
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
+        color: var(--text);
+
+        background:
+            radial-gradient(
+                circle at 15% 20%,
+                rgba(22,163,106,.13),
+                transparent 32%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(22,135,217,.12),
+                transparent 30%
+            ),
+            linear-gradient(
+                135deg,
+                #050c0b,
+                #071411 48%,
+                #07100f
+            );
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 25px;
+
+        overflow-x: hidden;
+    }
+
+    /* Background decoration */
+
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(2px);
+    }
+
+    body::before {
+        width: 420px;
+        height: 420px;
+
+        top: -180px;
+        left: -180px;
+
+        border: 1px solid rgba(32,201,130,.10);
+        box-shadow:
+            0 0 100px rgba(22,163,106,.08);
+    }
+
+    body::after {
+        width: 500px;
+        height: 500px;
+
+        right: -250px;
+        bottom: -250px;
+
+        border: 1px solid rgba(57,169,242,.08);
+        box-shadow:
+            0 0 120px rgba(22,135,217,.07);
+    }
+
+    .login-wrapper {
+        width: 100%;
+        max-width: 460px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Card */
+
+    .login-card {
+        background:
+            linear-gradient(
+                145deg,
+                rgba(20,39,36,.97),
+                rgba(10,23,21,.98)
+            );
+
+        border: 1px solid var(--border);
+
+        border-radius: 26px;
+
+        padding: 38px;
+
+        box-shadow: var(--shadow);
+
+        backdrop-filter: blur(20px);
+
+        animation:
+            cardEnter .55s ease both;
+    }
+
+    @keyframes cardEnter {
+        from {
+            opacity: 0;
+            transform: translateY(18px) scale(.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Logo */
+
+    .brand {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .logo-box {
+        width: 82px;
+        height: 82px;
+
+        margin: 0 auto 17px;
+
+        border-radius: 22px;
+
+        padding: 7px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(22,163,106,.25),
+                rgba(22,135,217,.18)
+            );
+
+        border: 1px solid rgba(255,255,255,.10);
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.3),
+            0 0 35px rgba(22,163,106,.08);
+    }
+
+    .logo-box img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        border-radius: 16px;
+
+        display: block;
+    }
+
+    .brand h1 {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -.5px;
+    }
+
+    .brand h1 span {
+        background:
+            linear-gradient(
+                90deg,
+                var(--green-light),
+                var(--blue-light)
+            );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+    }
+
+    .brand p {
+        margin-top: 7px;
+
+        color: var(--muted);
+
+        font-size: 13px;
+    }
+
+    /* Security badge */
+
+    .security-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        width: fit-content;
+
+        margin: 0 auto 28px;
+
+        padding: 7px 12px;
+
+        border-radius: 999px;
+
+        background: rgba(22,163,106,.09);
+
+        border: 1px solid rgba(22,163,106,.18);
+
+        color: #9be4c3;
+
+        font-size: 10px;
+        font-weight: 800;
+
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+
+    .security-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: var(--green-light);
+
+        box-shadow:
+            0 0 12px rgba(32,201,130,.7);
+
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: .5;
+            transform: scale(.75);
+        }
+    }
+
+    /* Error */
+
+    .error-box {
+        display: none;
+
+        padding: 12px 14px;
+
+        margin-bottom: 18px;
+
+        border-radius: 12px;
+
+        background:
+            rgba(239,91,104,.08);
+
+        border:
+            1px solid rgba(239,91,104,.2);
+
+        color: #ff9ba5;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+    .error-box.show {
+        display: block;
+
+        animation:
+            errorEnter .25s ease;
+    }
+
+    @keyframes errorEnter {
+        from {
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Form */
+
+    .form-group {
+        margin-bottom: 19px;
+    }
+
+    .form-label {
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: #c9dad5;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: .04em;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+
+        left: 15px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: #718b85;
+
+        font-size: 15px;
+
+        pointer-events: none;
+    }
+
+    .form-input {
+        width: 100%;
+
+        height: 51px;
+
+        border-radius: 13px;
+
+        border: 1px solid rgba(255,255,255,.09);
+
+        outline: none;
+
+        background:
+            rgba(4,13,12,.75);
+
+        color: var(--text);
+
+        padding:
+            0 45px 0 43px;
+
+        font-size: 13px;
+
+        transition:
+            border-color .2s ease,
+            box-shadow .2s ease,
+            background .2s ease;
+    }
+
+    .form-input::placeholder {
+        color: #58716b;
+    }
+
+    .form-input:hover {
+        border-color:
+            rgba(255,255,255,.14);
+    }
+
+    .form-input:focus {
+        border-color:
+            rgba(32,201,130,.55);
+
+        background:
+            rgba(5,18,16,.95);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(32,201,130,.08);
+    }
+
+    .password-toggle {
+        position: absolute;
+
+        right: 12px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 32px;
+        height: 32px;
+
+        border: 0;
+
+        border-radius: 8px;
+
+        background: transparent;
+
+        color: #718b85;
+
+        cursor: pointer;
+
+        font-size: 14px;
+
+        transition:
+            background .2s ease,
+            color .2s ease;
+    }
+
+    .password-toggle:hover {
+        background:
+            rgba(255,255,255,.06);
+
+        color: white;
+    }
+
+    /* Options */
+
+    .login-options {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        margin: 2px 0 23px;
+    }
+
+    .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        color: var(--muted);
+
+        font-size: 11px;
+
+        cursor: pointer;
+    }
+
+    .remember input {
+        width: 15px;
+        height: 15px;
+
+        accent-color:
+            var(--green);
+    }
+
+    .forgot {
+        color: #68cfa2;
+
+        font-size: 11px;
+
+        text-decoration: none;
+
+        cursor: pointer;
+    }
+
+    .forgot:hover {
+        text-decoration: underline;
+    }
+
+    /* Login button */
+
+    .login-button {
+        width: 100%;
+
+        height: 53px;
+
+        border: none;
+
+        border-radius: 14px;
+
+        cursor: pointer;
+
+        color: white;
+
+        font-size: 13px;
+
+        font-weight: 850;
+
+        letter-spacing: .01em;
+
+        background:
+            linear-gradient(
+                100deg,
+                #0d925c,
+                #1286c9
+            );
+
+        box-shadow:
+            0 13px 30px
+            rgba(13,146,92,.16);
+
+        transition:
+            transform .2s ease,
+            box-shadow .2s ease,
+            opacity .2s ease;
+    }
+
+    .login-button:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 17px 38px
+            rgba(13,146,92,.25);
+    }
+
+    .login-button:active {
+        transform: translateY(0);
+    }
+
+    .login-button:disabled {
+        cursor: not-allowed;
+
+        opacity: .65;
+
+        transform: none;
+    }
+
+    .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+    }
+
+    .spinner {
+        display: none;
+
+        width: 16px;
+        height: 16px;
+
+        border:
+            2px solid
+            rgba(255,255,255,.35);
+
+        border-top-color: white;
+
+        border-radius: 50%;
+
+        animation:
+            spin .7s linear infinite;
+    }
+
+    .loading .spinner {
+        display: block;
+    }
+
+    .loading .button-text {
+        display: none;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Footer */
+
+    .security-note {
+        margin-top: 23px;
+
+        padding-top: 21px;
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.07);
+
+        text-align: center;
+
+        color: #627a74;
+
+        font-size: 10px;
+
+        line-height: 1.65;
+    }
+
+    .security-note strong {
+        color: #8ea69f;
+    }
+
+    .footer {
+        text-align: center;
+
+        margin-top: 22px;
+
+        color: #526862;
+
+        font-size: 9px;
+
+        line-height: 1.7;
+    }
+
+    .footer strong {
+        color: #71988f;
+    }
+
+    /* Success overlay */
+
+    .success-screen {
+        display: none;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 20;
+
+        background:
+            rgba(4,10,9,.94);
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px;
+
+        backdrop-filter: blur(12px);
+    }
+
+    .success-screen.show {
+        display: flex;
+    }
+
+    .success-card {
+        width: 100%;
+        max-width: 350px;
+
+        text-align: center;
+
+        padding: 35px;
+
+        background: #10201d;
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-radius: 22px;
+
+        box-shadow: var(--shadow);
+    }
+
+    .success-icon {
+        width: 58px;
+        height: 58px;
+
+        margin: 0 auto 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background:
+            rgba(22,163,106,.13);
+
+        border:
+            1px solid
+            rgba(22,163,106,.25);
+
+        color: #43d993;
+
+        font-size: 25px;
+    }
+
+    .success-card h2 {
+        font-size: 19px;
+    }
+
+    .success-card p {
+        margin-top: 7px;
+
+        color: var(--muted);
+
+        font-size: 11px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 520px) {
+
+        body {
+            padding: 16px;
+        }
+
+        .login-card {
+            padding: 28px 21px;
+
+            border-radius: 21px;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+        }
+
+        .logo-box {
+            width: 72px;
+            height: 72px;
+        }
+
+        .login-options {
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .remember {
+            font-size: 10px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .01ms !important;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<main class="login-wrapper">
+
+    <section class="login-card">
+
+        <div class="brand">
+
+            <div class="logo-box">
+                <img
+                    src="PL.png"
+                    alt="Pharma Luz Ltd Logo"
+                >
+            </div>
+
+            <h1>
+                Pharma <span>Luz</span>
+            </h1>
+
+            <p>
+                Secure administration portal
+            </p>
+
+        </div>
+
+        <div class="security-badge">
+            <span class="security-dot"></span>
+            Protected administrator access
+        </div>
+
+        <div
+            id="errorBox"
+            class="error-box"
+            role="alert"
+            aria-live="polite">
+        </div>
+
+        <form
+            id="loginForm"
+            autocomplete="on"
+            novalidate>
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="email">
+                    Administrator Email
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span
+                        class="input-icon"
+                        aria-hidden="true">
+                        ✉
+                    </span>
+
+                    <input
+                        id="email"
+                        class="form-input"
+                        type="email"
+                        name="email"
+                        placeholder="Enter administrator email"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="password">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span
+                        class="input-icon"
+                        aria-hidden="true">
+                        🔒
+                    </span>
+
+                    <input
+                        id="password"
+                        class="form-input"
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="passwordToggle"
+                        class="password-toggle"
+                        aria-label="Show password">
+                        ◉
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="login-options">
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                    >
+
+                    <span>
+                        Remember this device
+                    </span>
+
+                </label>
+
+                <a
+                    href="#"
+                    id="forgotPassword"
+                    class="forgot">
+                    Forgot password?
+                </a>
+
+            </div>
+
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button">
+
+                <span class="button-content">
+
+                    <span
+                        id="spinner"
+                        class="spinner">
+                    </span>
+
+                    <span
+                        id="buttonText"
+                        class="button-text">
+                        Sign In →
+                    </span>
+
+                </span>
+
+            </button>
+
+        </form>
+
+        <div class="security-note">
+
+            🔐 This area is restricted to authorized
+            <strong>Pharma Luz</strong> administrators.
+            Authentication is handled securely by
+            Firebase Authentication.
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div>
+            Pharma Luz Ltd Administration
+        </div>
+
+        <div>
+            © 2026 Pharma Luz Ltd. All rights reserved.
+        </div>
+
+        <div>
+            Powered by <strong>ARTSA Labs</strong>
+        </div>
+
+    </footer>
+
+</main>
+
+<div
+    id="successScreen"
+    class="success-screen">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Authentication Successful
+        </h2>
+
+        <p>
+            Opening the Pharma Luz administration dashboard...
+        </p>
+
+    </div>
+
+</div>
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        setPersistence,
+        browserLocalPersistence,
+        browserSessionPersistence,
+        onAuthStateChanged
+    } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+    /* =====================================================
+       FIREBASE CONFIG
+    ===================================================== */
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyB5YuPkGl43Lei5lW6plaHTahI5HvE3SR4",
+
+        authDomain:
+            "pharma-luz.firebaseapp.com",
+
+        projectId:
+            "pharma-luz",
+
+        storageBucket:
+            "pharma-luz.firebasestorage.app",
+
+        messagingSenderId:
+            "307533872303",
+
+        appId:
+            "1:307533872303:web:0135604a9ba18d88f0a85a"
+
+    };
+
+
+    /* =====================================================
+       AUTHORIZED ADMINISTRATORS
+    ===================================================== */
+
+    const ADMIN_EMAILS = new Set([
+
+        "pharma2020luz@gmail.com",
+        "nirluzv@gmail.com"
+
+    ]);
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    const app =
+        initializeApp(firebaseConfig);
+
+    const auth =
+        getAuth(app);
+
+
+    /* =====================================================
+       DOM
+    ===================================================== */
+
+    const form =
+        document.getElementById("loginForm");
+
+    const emailInput =
+        document.getElementById("email");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const errorBox =
+        document.getElementById("errorBox");
+
+    const passwordToggle =
+        document.getElementById("passwordToggle");
+
+    const forgotPassword =
+        document.getElementById("forgotPassword");
+
+    const rememberMe =
+        document.getElementById("rememberMe");
+
+    const successScreen =
+        document.getElementById("successScreen");
+
+
+    /* =====================================================
+       PASSWORD VISIBILITY
+    ===================================================== */
+
+    passwordToggle.addEventListener(
+        "click",
+        () => {
+
+            const showing =
+                passwordInput.type === "text";
+
+            passwordInput.type =
+                showing
+                    ? "password"
+                    : "text";
+
+            passwordToggle.textContent =
+                showing
+                    ? "◉"
+                    : "◎";
+
+            passwordToggle.setAttribute(
+                "aria-label",
+                showing
+                    ? "Show password"
+                    : "Hide password"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ERROR DISPLAY
+    ===================================================== */
+
+    function showError(message) {
+
+        errorBox.textContent =
+            message;
+
+        errorBox.classList.add("show");
+
+    }
+
+
+    function clearError() {
+
+        errorBox.textContent = "";
+
+        errorBox.classList.remove("show");
+
+    }
+
+
+    /* =====================================================
+       LOADING STATE
+    ===================================================== */
+
+    function setLoading(loading) {
+
+        loginButton.disabled =
+            loading;
+
+        loginButton.classList.toggle(
+            "loading",
+            loading
+        );
+
+    }
+
+
+    /* =====================================================
+       AUTHORIZED ADMIN CHECK
+    ===================================================== */
+
+    function isAuthorizedAdmin(user) {
+
+        if (!user || !user.email) {
+
+            return false;
+
+        }
+
+        return ADMIN_EMAILS.has(
+            user.email.toLowerCase().trim()
+        );
+
+    }
+
+
+    /* =====================================================
+       AUTH STATE
+    ===================================================== */
+
+    onAuthStateChanged(
+        auth,
+        user => {
+
+            if (!user) {
+                return;
+            }
+
+            /*
+             * Firebase says the user is authenticated.
+             * We additionally verify that this account is
+             * one of the two authorized administrators.
+             */
+
+            if (!isAuthorizedAdmin(user)) {
+
+                auth.signOut();
+
+                showError(
+                    "This account is authenticated but is not authorized to access the Pharma Luz administration portal."
+                );
+
+                return;
+
+            }
+
+            /*
+             * Already authenticated administrator.
+             * Send directly to the protected dashboard.
+             */
+
+            window.location.replace(
+                "admin.html"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    form.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+            clearError();
+
+            const email =
+                emailInput.value
+                    .trim()
+                    .toLowerCase();
+
+            const password =
+                passwordInput.value;
+
+
+            if (!email) {
+
+                showError(
+                    "Please enter your administrator email."
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            if (!password) {
+
+                showError(
+                    "Please enter your password."
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+            /*
+             * Client-side authorization check provides a
+             * friendly message. Firestore Rules remain the
+             * real security boundary.
+             */
+
+            if (!ADMIN_EMAILS.has(email)) {
+
+                showError(
+                    "This email is not authorized to access the Pharma Luz administration portal."
+                );
+
+                return;
+
+            }
+
+
+            setLoading(true);
+
+
+            try {
+
+                const remember =
+                    rememberMe.checked;
+
+
+                await setPersistence(
+                    auth,
+                    remember
+                        ? browserLocalPersistence
+                        : browserSessionPersistence
+                );
+
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                /*
+                 * Firebase authentication succeeded.
+                 * The auth-state listener will perform the
+                 * final administrator check and redirect.
+                 */
+
+                successScreen.classList.add(
+                    "show"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Administrator login error:",
+                    error
+                );
+
+
+                let message =
+                    "Unable to sign in. Please check your credentials and try again.";
+
+
+                switch (error.code) {
+
+                    case "auth/invalid-credential":
+                    case "auth/wrong-password":
+                    case "auth/user-not-found":
+
+                        message =
+                            "Incorrect administrator email or password.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        message =
+                            "Please enter a valid administrator email address.";
+
+                        break;
+
+
+                    case "auth/too-many-requests":
+
+                        message =
+                            "Too many unsuccessful attempts. Please wait and try again later.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        message =
+                            "Network connection failed. Check your internet connection and try again.";
+
+                        break;
+
+
+                    case "auth/user-disabled":
+
+                        message =
+                            "This administrator account has been disabled.";
+
+                        break;
+
+                }
+
+
+                showError(message);
+
+                setLoading(false);
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       FORGOT PASSWORD
+    ===================================================== */
+
+    forgotPassword.addEventListener(
+        "click",
+        async event => {
+
+            event.preventDefault();
+
+            clearError();
+
+            const email =
+                emailInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!email) {
+
+                showError(
+                    "Enter your administrator email first, then select Forgot password."
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            if (!ADMIN_EMAILS.has(email)) {
+
+                showError(
+                    "Password reset is available only for authorized administrator accounts."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                await sendPasswordResetEmail(
+                    auth,
+                    email
+                );
+
+
+                showError(
+                    "Password reset instructions have been sent to the administrator email."
+                );
+
+
+                errorBox.style.background =
+                    "rgba(22,163,106,.08)";
+
+                errorBox.style.borderColor =
+                    "rgba(22,163,106,.2)";
+
+                errorBox.style.color =
+                    "#83dfb5";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Password reset error:",
+                    error
+                );
+
+
+                showError(
+                    "Unable to send the password reset email. Please try again."
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLEAR SUCCESS SCREEN ON ERROR / ESCAPE
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                successScreen.classList.contains("show")
+            ) {
+
+                successScreen.classList.remove(
+                    "show"
+                );
+
+                setLoading(false);
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "✅ Pharma Luz secure administrator login initialized"
+    );
+
+</script>
+
+</body>
+</html>

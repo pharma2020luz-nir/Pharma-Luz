@@ -1,0 +1,3612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Request pharmaceutical and healthcare services from Pharma Luz Ltd."
+  >
+
+  <meta
+    name="theme-color"
+    content="#07131a"
+  >
+
+  <link rel="icon" type="image/png" href="Luz.jpeg">
+  <link rel="shortcut icon" type="image/png" href="Luz.jpeg">
+
+  <title>Request a Service | Pharma Luz Ltd</title>
+
+  <link
+    rel="stylesheet"
+    href="service-form.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <style>
+
+    /* =========================================================
+       PHARMA LUZ DARK SERVICE FORM
+    ========================================================= */
+
+    :root {
+
+      --pl-green: #19c878;
+      --pl-green-dark: #0b8f52;
+
+      --pl-blue: #1598e8;
+      --pl-blue-dark: #0874b8;
+
+      --pl-bg: #061015;
+      --pl-bg-2: #08171d;
+
+      --pl-card: rgba(10, 27, 34, 0.92);
+      --pl-card-2: rgba(13, 35, 43, 0.95);
+
+      --pl-border: rgba(25, 200, 120, 0.18);
+
+      --pl-text: #eefaf5;
+      --pl-text-soft: #a9bbb6;
+      --pl-muted: #72847f;
+
+      --pl-danger: #ff6868;
+      --pl-success: #25d17f;
+
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body.service-form-page {
+
+      margin: 0;
+
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(25, 200, 120, 0.10),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(21, 152, 232, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          var(--pl-bg),
+          var(--pl-bg-2)
+        );
+
+      color: var(--pl-text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      overflow-x: hidden;
+    }
+
+
+    body.service-form-page::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 80%
+        );
+
+      z-index: -1;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .service-form-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      padding: 15px 6%;
+
+      background:
+        rgba(5, 17, 22, 0.88);
+
+      backdrop-filter: blur(18px);
+
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid rgba(25, 200, 120, 0.15);
+
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.28);
+    }
+
+
+    .service-form-brand {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+    }
+
+
+    .service-form-brand img {
+
+      width: 52px;
+
+      height: 52px;
+
+      object-fit: contain;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,0.04);
+
+      padding: 5px;
+
+      border:
+        1px solid rgba(25, 200, 120, 0.20);
+
+      box-shadow:
+        0 0 25px rgba(25, 200, 120, 0.12);
+    }
+
+
+    .service-form-brand h1 {
+
+      margin: 0;
+
+      font-size: 19px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.02em;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #79f0b6
+        );
+
+      background-clip: text;
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    .service-form-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(1100px, 92%);
+      margin: 18px auto 0;
+    }
+
+
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(25, 200, 120, 0.20);
+      background: rgba(8, 28, 35, 0.85);
+      color: var(--pl-text);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+
+    .language-switcher select {
+      background: transparent;
+      color: var(--pl-text);
+      border: none;
+      font: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+
+    .website-notice {
+      display: none;
+      width: min(1100px, 92%);
+      margin: 20px auto 0;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(25, 200, 120, 0.10);
+      border: 1px solid rgba(25, 200, 120, 0.18);
+      color: #dffef2;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+
+    .website-notice strong {
+      color: #ffffff;
+    }
+
+
+    .service-form-brand span {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--pl-muted);
+
+      font-size: 11px;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .service-form-main {
+
+      width: min(1100px, 92%);
+
+      margin: 0 auto;
+
+      padding: 75px 0 90px;
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .service-form-intro {
+
+      max-width: 760px;
+
+      margin: 0 auto 42px;
+
+      text-align: center;
+    }
+
+
+    .service-form-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(25, 200, 120, 0.08);
+
+      border:
+        1px solid rgba(25, 200, 120, 0.22);
+
+      color: #6ee8ad;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    .service-form-intro h2 {
+
+      margin: 20px 0 14px;
+
+      font-size: clamp(34px, 6vw, 58px);
+
+      line-height: 1.05;
+
+      letter-spacing: -0.045em;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #82efbb,
+          #56bff7
+        );
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    .service-form-intro p {
+
+      margin: 0;
+
+      color: var(--pl-text-soft);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    .service-form-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      margin-top: 22px;
+    }
+
+
+    .service-form-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 12px 18px;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(25, 200, 120, 0.12),
+          rgba(21, 152, 232, 0.12)
+        );
+
+      border:
+        1px solid rgba(25, 200, 120, 0.24);
+
+      color: #dffef1;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+
+    .service-form-link:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 18px 35px rgba(25, 200, 120, 0.12);
+
+      border-color: rgba(25, 200, 120, 0.38);
+    }
+
+
+    /* =========================================================
+       MAIN FORM CARD
+    ========================================================= */
+
+    .service-form-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 30px;
+
+      border-radius: 26px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(13, 35, 43, 0.96),
+          rgba(7, 20, 26, 0.96)
+        );
+
+      border:
+        1px solid var(--pl-border);
+
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.40),
+        0 0 60px rgba(25, 200, 120, 0.035);
+    }
+
+
+    .service-form-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: -150px;
+
+      right: -150px;
+
+      width: 300px;
+
+      height: 300px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(25, 200, 120, 0.07);
+
+      filter: blur(45px);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       FORM SECTION
+    ========================================================= */
+
+    .service-form-section {
+
+      position: relative;
+
+      padding: 30px 0;
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.07);
+    }
+
+
+    .service-form-section:first-child {
+      padding-top: 8px;
+    }
+
+
+    .service-form-section:last-of-type {
+      border-bottom: none;
+    }
+
+
+    .service-form-section-title {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .service-form-section-title > span {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 40px;
+
+      height: 40px;
+
+      flex: 0 0 40px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(25, 200, 120, 0.18),
+          rgba(21, 152, 232, 0.13)
+        );
+
+      border:
+        1px solid rgba(25, 200, 120, 0.22);
+
+      color: #66e6aa;
+
+      font-weight: 900;
+
+      font-size: 13px;
+    }
+
+
+    .service-form-section-title h3 {
+
+      margin: 0 0 5px;
+
+      font-size: 20px;
+
+      color: #f4fffa;
+    }
+
+
+    .service-form-section-title p {
+
+      margin: 0;
+
+      color: var(--pl-muted);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       GRID
+    ========================================================= */
+
+    .service-form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 20px;
+    }
+
+
+    .service-form-full {
+      grid-column: 1 / -1;
+    }
+
+
+    /* =========================================================
+       FIELDS
+    ========================================================= */
+
+    .service-form-field {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+
+    .service-form-field label {
+
+      color: #c8d8d4;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.02em;
+    }
+
+
+    .service-form-field label span {
+
+      color: #54e6a2;
+
+      margin-left: 2px;
+    }
+
+
+    .service-form-field input,
+    .service-form-field select,
+    .service-form-field textarea {
+
+      width: 100%;
+
+      border: 1px solid
+        rgba(255,255,255,0.09);
+
+      outline: none;
+
+      border-radius: 13px;
+
+      background:
+        rgba(4, 15, 20, 0.82);
+
+      color: #effff8;
+
+      padding: 14px 15px;
+
+      font: inherit;
+
+      font-size: 14px;
+
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+
+
+    .service-form-field input::placeholder,
+    .service-form-field textarea::placeholder {
+
+      color: #536762;
+    }
+
+
+    .service-form-field input:hover,
+    .service-form-field select:hover,
+    .service-form-field textarea:hover {
+
+      border-color:
+        rgba(25, 200, 120, 0.24);
+    }
+
+
+    .service-form-field input:focus,
+    .service-form-field select:focus,
+    .service-form-field textarea:focus {
+
+      border-color: #19c878;
+
+      background:
+        rgba(7, 24, 30, 0.95);
+
+      box-shadow:
+        0 0 0 3px
+          rgba(25, 200, 120, 0.09),
+        0 0 25px
+          rgba(25, 200, 120, 0.07);
+
+      transform: translateY(-1px);
+    }
+
+
+    .service-form-field textarea {
+
+      min-height: 120px;
+
+      resize: vertical;
+
+      line-height: 1.7;
+    }
+
+
+    .service-form-field select {
+
+      appearance: none;
+
+      background-image:
+        linear-gradient(45deg, transparent 50%, #69e7ae 50%),
+        linear-gradient(135deg, #69e7ae 50%, transparent 50%);
+
+      background-position:
+        calc(100% - 18px) 52%,
+        calc(100% - 13px) 52%;
+
+      background-size:
+        5px 5px,
+        5px 5px;
+
+      background-repeat: no-repeat;
+
+      padding-right: 42px;
+    }
+
+
+    .service-form-field select option {
+
+      background: #091a20;
+
+      color: white;
+    }
+
+
+    /* =========================================================
+       PRICE SUMMARY
+    ========================================================= */
+
+    .price-summary {
+
+      position: relative;
+
+      margin-top: 28px;
+
+      padding: 24px;
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(12, 36, 42, 0.96),
+          rgba(6, 20, 25, 0.96)
+        );
+
+      border:
+        1px solid rgba(25, 200, 120, 0.20);
+
+      box-shadow:
+        inset 0 1px 0
+          rgba(255,255,255,0.025),
+        0 15px 40px
+          rgba(0,0,0,0.20);
+    }
+
+
+    .price-summary::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+
+      height: 120px;
+
+      right: -50px;
+
+      bottom: -50px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(21, 152, 232, 0.08);
+
+      filter: blur(25px);
+
+      pointer-events: none;
+    }
+
+
+    .price-summary-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .price-summary-header h3 {
+
+      margin: 0;
+
+      color: #f4fffa;
+
+      font-size: 17px;
+    }
+
+
+    .price-summary-badge {
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(25, 200, 120, 0.10);
+
+      border:
+        1px solid rgba(25, 200, 120, 0.18);
+
+      color: #67e7ad;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 0.06em;
+
+      white-space: nowrap;
+    }
+
+
+    .receipt-row {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 12px 0;
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+      font-size: 13px;
+    }
+
+
+    .receipt-row span:first-child {
+
+      color: #718681;
+    }
+
+
+    .receipt-row span:last-child {
+
+      color: #dcece7;
+
+      font-weight: 700;
+
+      text-align: right;
+    }
+
+
+    .receipt-total {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-top: 17px;
+
+      padding-top: 17px;
+
+      border-top:
+        2px solid rgba(25, 200, 120, 0.55);
+
+      font-size: 16px;
+
+      font-weight: 900;
+    }
+
+
+    .receipt-total span:first-child {
+      color: #d8e9e4;
+    }
+
+
+    .receipt-total span:last-child {
+
+      color: #50e59b;
+
+      text-shadow:
+        0 0 18px
+          rgba(25,200,120,0.25);
+    }
+
+
+    .receipt-note {
+
+      margin: 15px 0 0;
+
+      color: #647873;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+    }
+
+
+    .firebase-status {
+
+      margin-top: 15px;
+
+      padding-top: 12px;
+
+      border-top:
+        1px solid rgba(255,255,255,0.05);
+
+      color: #4fdd98;
+
+      font-size: 10px;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       PAYMENT
+    ========================================================= */
+
+    #paymentSection {
+
+      display: block;
+    }
+
+
+    #paymentStatus {
+
+      color: #69e6ad;
+
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       UPLOAD
+    ========================================================= */
+
+    .service-form-upload {
+
+      position: relative;
+
+      padding: 25px;
+
+      border-radius: 17px;
+
+      border:
+        1px dashed
+        rgba(25, 200, 120, 0.30);
+
+      background:
+        rgba(5, 19, 24, 0.65);
+
+      text-align: center;
+
+      transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+
+    .service-form-upload:hover {
+
+      border-color:
+        rgba(25, 200, 120, 0.65);
+
+      background:
+        rgba(8, 30, 35, 0.85);
+    }
+
+
+    .service-form-upload label {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      cursor: pointer;
+    }
+
+
+    .service-form-upload strong {
+
+      color: #79eab2;
+
+      font-size: 14px;
+    }
+
+
+    .service-form-upload span {
+
+      color: #6e817b;
+
+      font-size: 11px;
+    }
+
+
+    .service-form-upload input {
+
+      width: 100%;
+
+      margin-top: 15px;
+
+      color: #9fb2ac;
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       CONSENT
+    ========================================================= */
+
+    .service-form-consent {
+
+      margin-top: 25px;
+
+      padding: 17px;
+
+      border-radius: 14px;
+
+      background:
+        rgba(25, 200, 120, 0.045);
+
+      border:
+        1px solid rgba(25, 200, 120, 0.10);
+    }
+
+
+    .service-form-consent label {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      cursor: pointer;
+
+      color: #a8bab5;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+
+    .service-form-consent input {
+
+      margin-top: 3px;
+
+      accent-color: #19c878;
+
+      width: 16px;
+
+      height: 16px;
+
+      flex: 0 0 16px;
+    }
+
+
+    /* =========================================================
+       MESSAGE
+    ========================================================= */
+
+    #formMessage {
+
+      margin-top: 22px;
+
+      padding: 15px;
+
+      border-radius: 13px;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       SUBMIT
+    ========================================================= */
+
+    .service-form-submit {
+
+      padding-top: 30px;
+
+      text-align: center;
+    }
+
+
+    .service-form-button {
+
+      position: relative;
+
+      overflow: hidden;
+
+      width: 100%;
+
+      max-width: 480px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      padding: 16px 22px;
+
+      cursor: pointer;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          100deg,
+          #0b9b59,
+          #16bd73,
+          #087fc2
+        );
+
+      box-shadow:
+        0 12px 35px
+          rgba(25, 200, 120, 0.16);
+
+      font: inherit;
+
+      font-weight: 900;
+
+      font-size: 14px;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+
+    .service-form-button:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 18px 45px
+          rgba(25, 200, 120, 0.25);
+    }
+
+
+    .service-form-button:active {
+
+      transform: translateY(0);
+    }
+
+
+    .service-form-button:disabled {
+
+      cursor: wait;
+
+      opacity: 0.65;
+
+      transform: none;
+    }
+
+
+    .service-form-submit > p {
+
+      margin: 15px auto 0;
+
+      max-width: 520px;
+
+      color: #687b75;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
+
+
+    .service-form-home-bottom {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 20px;
+
+      color: #6fe5ad;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      text-decoration: none;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+
+    .service-form-home-bottom:hover {
+
+      color: white;
+
+      transform: translateX(-3px);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .service-form-footer {
+
+      padding: 35px 20px;
+
+      border-top:
+        1px solid rgba(255,255,255,0.06);
+
+      background:
+        rgba(3, 12, 16, 0.82);
+
+      text-align: center;
+    }
+
+
+    .service-form-footer p {
+
+      margin: 6px 0;
+
+      color: #60736d;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
+
+
+    .service-form-footer strong {
+
+      color: #56df9c;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 720px) {
+
+      .service-form-main {
+
+        width: 94%;
+
+        padding:
+          50px 0 65px;
+      }
+
+
+      .service-form-card {
+
+        padding: 20px;
+
+        border-radius: 21px;
+      }
+
+
+      .service-form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 17px;
+      }
+
+
+      .service-form-full {
+
+        grid-column: auto;
+      }
+
+
+      .service-form-section {
+
+        padding: 25px 0;
+      }
+
+
+      .service-form-section-title h3 {
+
+        font-size: 17px;
+      }
+
+
+      .price-summary {
+
+        padding: 18px;
+      }
+
+
+      .price-summary-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+
+      .receipt-row,
+      .receipt-total {
+
+        font-size: 12px;
+      }
+
+    }
+
+
+    @media (max-width: 430px) {
+
+      .service-form-header {
+
+        padding:
+          12px 4%;
+      }
+
+
+      .service-form-brand img {
+
+        width: 45px;
+
+        height: 45px;
+      }
+
+
+      .service-form-brand h1 {
+
+        font-size: 16px;
+      }
+
+
+      .service-form-intro h2 {
+
+        font-size: 34px;
+      }
+
+
+      .service-form-card {
+
+        padding: 16px;
+      }
+
+
+      .service-form-section-title {
+
+        gap: 10px;
+      }
+
+
+      .service-form-section-title > span {
+
+        width: 34px;
+
+        height: 34px;
+
+        flex-basis: 34px;
+
+        border-radius: 10px;
+
+        font-size: 11px;
+      }
+
+
+      .service-form-field input,
+      .service-form-field select,
+      .service-form-field textarea {
+
+        padding: 13px;
+
+        font-size: 13px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="service-form-page">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="service-form-header">
+
+  <div class="service-form-brand">
+
+    <img
+      src="Luz.jpeg"
+      alt="Pharma Luz Ltd"
+    >
+
+    <div>
+
+      <h1>
+        Pharma Luz Ltd
+      </h1>
+
+      <span>
+        Service Request
+      </span>
+
+    </div>
+
+  </div>
+
+</header>
+
+<div class="service-form-toolbar">
+  <div></div>
+
+  <label class="language-switcher" aria-label="Change website language">
+    <i class="fa-solid fa-globe"></i>
+    <select id="languageSwitcher">
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="rw">RW</option>
+      <option value="sw">SW</option>
+      <option value="es">ES</option>
+      <option value="pt">PT</option>
+      <option value="ar">AR</option>
+    </select>
+  </label>
+</div>
+
+<div id="websiteNotice" class="website-notice" aria-live="polite"></div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="service-form-main">
+
+
+  <!-- INTRO -->
+
+  <section class="service-form-intro">
+
+    <span class="service-form-badge">
+      <i class="fa-solid fa-sparkles"></i>
+      PHARMA LUZ SERVICES
+    </span>
+
+    <h2>
+      How can we help you?
+    </h2>
+
+    <p data-i18n="introText">
+      Complete the form below to request a Pharma Luz
+      pharmaceutical or healthcare service. Provide accurate
+      information so our team can understand your needs
+      and respond appropriately.
+    </p>
+
+    <div class="service-form-links">
+      <a href="other-services-form.html" class="service-form-link" data-i18n="otherServiceLink">
+        <i class="fa-solid fa-briefcase"></i>
+        Need another service? Open other requests form
+      </a>
+    </div>
+
+  </section>
+
+
+  <!-- FORM -->
+
+  <section class="service-form-card">
+
+
+    <form id="serviceRequestForm">
+
+
+      <!-- =====================================================
+           01 PERSONAL INFORMATION
+      ====================================================== -->
+
+      <div class="service-form-section">
+
+        <div class="service-form-section-title">
+
+          <span>01</span>
+
+          <div>
+
+            <h3 data-i18n="personalInfoTitle">
+              Personal Information
+            </h3>
+
+            <p data-i18n="personalInfoText">
+              Tell us how we can contact you.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-grid">
+
+
+          <div class="service-form-field">
+
+            <label for="fullName" data-i18n="fullNameLabel">
+              Full Name <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+              data-i18n-placeholder="fullNamePlaceholder"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="phone" data-i18n="phoneLabel">
+              Phone Number <span>*</span>
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+250 7XX XXX XXX"
+              data-i18n-placeholder="phonePlaceholder"
+              autocomplete="tel"
+              required
+            >
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="email" data-i18n="emailLabel">
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              data-i18n-placeholder="emailPlaceholder"
+              autocomplete="email"
+            >
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="preferredContact" data-i18n="preferredContactLabel">
+              Preferred Contact Method
+            </label>
+
+            <select
+              id="preferredContact"
+              name="preferredContact"
+            >
+
+              <option value="">
+                Select one
+              </option>
+
+              <option value="phone">
+                Phone Call
+              </option>
+
+              <option value="whatsapp">
+                WhatsApp
+              </option>
+
+              <option value="email">
+                Email
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           02 SERVICE INFORMATION
+      ====================================================== -->
+
+      <div class="service-form-section">
+
+        <div class="service-form-section-title">
+
+          <span>02</span>
+
+          <div>
+
+            <h3 data-i18n="serviceInfoTitle">
+              Service Information
+            </h3>
+
+            <p data-i18n="serviceInfoText">
+              Choose the service you are interested in.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-grid">
+
+
+          <div
+            class="service-form-field service-form-full"
+          >
+
+            <label for="service" data-i18n="serviceNeededLabel">
+              Service Needed <span>*</span>
+            </label>
+
+            <select
+              id="service"
+              name="service"
+              required
+            >
+
+              <option value="">
+                Select a service
+              </option>
+
+              <option value="prescription">
+                Prescription Services
+              </option>
+
+              <option value="medication">
+                Medication Information
+              </option>
+
+              <option value="delivery">
+                Medicine Delivery
+              </option>
+
+              <option value="health-screening">
+                Health Screening
+              </option>
+
+              <option value="vaccination">
+                Vaccination Services
+              </option>
+
+              <option value="chronic-care">
+                Chronic Disease Support
+              </option>
+
+              <option value="first-aid">
+                First Aid Supplies
+              </option>
+
+              <option value="other">
+                Other Service
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="preferredDate" data-i18n="preferredDateLabel">
+              Preferred Date
+            </label>
+
+            <input
+              type="date"
+              id="preferredDate"
+              name="preferredDate"
+            >
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="preferredTime" data-i18n="preferredTimeLabel">
+              Preferred Time
+            </label>
+
+            <select
+              id="preferredTime"
+              name="preferredTime"
+            >
+
+              <option value="">
+                Select a time
+              </option>
+
+              <option value="morning">
+                Morning
+              </option>
+
+              <option value="afternoon">
+                Afternoon
+              </option>
+
+              <option value="evening">
+                Evening
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- PRICE SUMMARY -->
+
+        <div
+          class="price-summary"
+          id="priceSummary"
+        >
+
+          <div class="price-summary-header">
+
+            <h3>
+              <i class="fa-solid fa-receipt"></i>
+              <span data-i18n="receiptTitle">Estimated Price Summary</span>
+            </h3>
+
+            <span class="price-summary-badge" data-i18n="receiptBadge">
+              BEFORE SUBMISSION
+            </span>
+
+          </div>
+
+
+          <div class="receipt-row">
+
+            <span data-i18n="receiptServiceLabel">
+              Service
+            </span>
+
+            <span id="summaryServiceName">
+              Select a service
+            </span>
+
+          </div>
+
+
+          <div class="receipt-row">
+
+            <span data-i18n="receiptContactLabel">
+              Contact Method
+            </span>
+
+            <span id="summaryContactMethod">
+              Not selected
+            </span>
+
+          </div>
+
+
+          <div class="receipt-row">
+
+            <span data-i18n="receiptScheduleLabel">
+              Preferred Date & Time
+            </span>
+
+            <span id="summarySchedule">
+              Not set yet
+            </span>
+
+          </div>
+
+
+          <div class="receipt-row">
+
+            <span data-i18n="receiptPriceLabel">
+              Service Price
+            </span>
+
+            <span id="summaryServicePrice">
+              0 RWF
+            </span>
+
+          </div>
+
+
+          <div class="receipt-row">
+
+            <span data-i18n="receiptFeeLabel">
+              Service Fee
+            </span>
+
+            <span id="summaryServiceFee">
+              0 RWF
+            </span>
+
+          </div>
+
+
+          <div class="receipt-total">
+
+            <span data-i18n="receiptTotalLabel">
+              Estimated Total
+            </span>
+
+            <span id="summaryTotal">
+              0 RWF
+            </span>
+
+          </div>
+
+
+          <p class="receipt-note" data-i18n="receiptNote">
+
+            This is an estimated amount based on the selected
+            service. Final costs may be confirmed by Pharma Luz
+            after reviewing your request.
+
+          </p>
+
+
+          <div
+            class="firebase-status"
+            id="firebaseStatus"
+          >
+            Loading current prices...
+          </div>
+
+        </div>
+
+
+        <input
+          type="hidden"
+          id="estimatedAmount"
+          name="estimatedAmount"
+          value="0"
+        >
+
+        <input
+          type="hidden"
+          id="servicePrice"
+          name="servicePrice"
+          value="0"
+        >
+
+        <input
+          type="hidden"
+          id="serviceFee"
+          name="serviceFee"
+          value="0"
+        >
+
+      </div>
+
+
+      <!-- =====================================================
+           03 PAYMENT
+      ====================================================== -->
+
+      <div
+        class="service-form-section"
+        id="paymentSection"
+      >
+
+        <div class="service-form-section-title">
+
+          <span>03</span>
+
+          <div>
+
+            <h3>
+              Payment Information
+            </h3>
+
+            <p>
+              This service may require payment.
+              Select your preferred payment method.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-grid">
+
+
+          <div class="service-form-field">
+
+            <label for="paymentMethod">
+              Payment Method <span>*</span>
+            </label>
+
+            <select
+              id="paymentMethod"
+              name="paymentMethod"
+            >
+
+              <option value="">
+                Select a payment method
+              </option>
+
+              <option value="mobile_money">
+                Mobile Money
+              </option>
+
+              <option value="bank_transfer">
+                Bank Transfer
+              </option>
+
+              <option value="cash">
+                Cash
+              </option>
+
+              <option value="card">
+                Card Payment
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="paymentStatus">
+              Payment Status
+            </label>
+
+            <input
+              type="text"
+              id="paymentStatus"
+              name="paymentStatus"
+              value="pending"
+              readonly
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <p
+          style="
+            margin: 15px 0 0;
+            color: #71847e;
+            font-size: 11px;
+            line-height: 1.7;
+          "
+          data-i18n="paymentInfoText"
+        >
+          Payment details and instructions will be confirmed
+          by Pharma Luz after your request is reviewed.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           04 LOCATION
+      ====================================================== -->
+
+      <div class="service-form-section">
+
+        <div class="service-form-section-title">
+
+          <span>04</span>
+
+          <div>
+
+            <h3 data-i18n="locationTitle">
+              Location
+            </h3>
+
+            <p data-i18n="locationText">
+              Help us know where the service is needed.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-grid">
+
+
+          <div class="service-form-field">
+
+            <label for="district" data-i18n="districtLabel">
+              District
+            </label>
+
+            <input
+              type="text"
+              id="district"
+              name="district"
+              placeholder="e.g. Gasabo"
+            >
+
+          </div>
+
+
+          <div class="service-form-field">
+
+            <label for="sector" data-i18n="sectorLabel">
+              Sector
+            </label>
+
+            <input
+              type="text"
+              id="sector"
+              name="sector"
+              placeholder="e.g. Kinyinya"
+            >
+
+          </div>
+
+
+          <div
+            class="service-form-field service-form-full"
+          >
+
+            <label for="address" data-i18n="addressLabel">
+              Address / Location Details
+            </label>
+
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Enter your location or nearby landmark"
+            >
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           05 REQUEST DETAILS
+      ====================================================== -->
+
+      <div class="service-form-section">
+
+        <div class="service-form-section-title">
+
+          <span>05</span>
+
+          <div>
+
+            <h3 data-i18n="requestDetailsTitle">
+              Request Details
+            </h3>
+
+            <p data-i18n="requestDetailsText">
+              Give us more information about what you need.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-field">
+
+          <label for="details" data-i18n="detailsLabel">
+            Describe Your Request <span>*</span>
+          </label>
+
+          <textarea
+            id="details"
+            name="details"
+            rows="6"
+            placeholder="Please describe the service you need..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <div
+          class="service-form-field"
+          style="margin-top: 20px;"
+        >
+
+          <label for="reference" data-i18n="referenceLabel">
+            Additional Information
+          </label>
+
+          <textarea
+            id="reference"
+            name="reference"
+            rows="4"
+            placeholder="Add any other information that may help us..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           06 SUPPORTING DOCUMENT
+      ====================================================== -->
+
+      <div class="service-form-section">
+
+        <div class="service-form-section-title">
+
+          <span>06</span>
+
+          <div>
+
+            <h3 data-i18n="documentTitle">
+              Supporting Document
+            </h3>
+
+            <p data-i18n="documentText">
+              Attach a document only if relevant.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-form-upload">
+
+          <label for="document">
+
+            <strong>
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span data-i18n="uploadDocLabel">Upload Document</span>
+            </strong>
+
+            <span data-i18n="uploadDocText">
+              PDF, JPG or PNG — optional
+            </span>
+
+          </label>
+
+          <input
+            type="file"
+            id="document"
+            name="document"
+            accept=".pdf,.jpg,.jpeg,.png"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           CONSENT
+      ====================================================== -->
+
+      <div class="service-form-consent">
+
+        <label>
+
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            required
+          >
+
+          <span data-i18n="consentText">
+            I confirm that the information I have provided is
+            accurate and I agree to be contacted by Pharma Luz
+            regarding this service request.
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <div
+        id="formMessage"
+        role="alert"
+        aria-live="polite"
+        style="display: none;"
+      ></div>
+
+
+      <!-- =====================================================
+           SUBMIT
+      ====================================================== -->
+
+      <div class="service-form-submit">
+
+        <button
+          type="submit"
+          class="service-form-button"
+          id="submitButton"
+        >
+
+          <span id="submitText" data-i18n="submitButtonText">
+            <i class="fa-solid fa-paper-plane"></i>
+            Submit Service Request
+          </span>
+
+          <span id="submitArrow">
+            →
+          </span>
+
+        </button>
+
+
+        <p>
+          We will review your request and contact you using
+          your preferred contact method.
+        </p>
+
+
+        <a
+          href="Pharma Luz ltd.html"
+          class="service-form-home-bottom"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Pharma Luz
+        </a>
+
+      </div>
+
+
+    </form>
+
+  </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="service-form-footer">
+
+  <p>
+    &copy; 2026 Pharma Luz Ltd. All rights reserved.
+  </p>
+
+  <p>
+    Powered by <strong>ARTSA Labs</strong>
+  </p>
+
+  <p>
+    General information only. For medical emergencies,
+    seek immediate professional medical assistance.
+  </p>
+
+</footer>
+
+
+<!-- =========================================================
+     FIREBASE + JAVASCRIPT
+========================================================= -->
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    doc,
+    getDoc,
+    serverTimestamp
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+  /* =========================================================
+     FIREBASE CONFIG
+  ========================================================= */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyB5YuPkGl43Lei5lW6plaHTahI5HvE3SR4",
+
+    authDomain:
+      "pharma-luz.firebaseapp.com",
+
+    projectId:
+      "pharma-luz",
+
+    storageBucket:
+      "pharma-luz.firebasestorage.app",
+
+    messagingSenderId:
+      "307533872303",
+
+    appId:
+      "1:307533872303:web:0135604a9ba18d88f0a85a"
+
+  };
+
+
+  /* =========================================================
+     FIREBASE INITIALIZATION
+  ========================================================= */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const db =
+    getFirestore(app);
+
+
+  console.log(
+    "Pharma Luz Firebase connected"
+  );
+
+
+  /* =========================================================
+     FORM ELEMENTS
+  ========================================================= */
+
+  const serviceForm =
+    document.getElementById(
+      "serviceRequestForm"
+    );
+
+  const submitButton =
+    document.getElementById(
+      "submitButton"
+    );
+
+  const submitText =
+    document.getElementById(
+      "submitText"
+    );
+
+  const submitArrow =
+    document.getElementById(
+      "submitArrow"
+    );
+
+  const formMessage =
+    document.getElementById(
+      "formMessage"
+    );
+
+  const websiteNotice =
+    document.getElementById(
+      "websiteNotice"
+    );
+
+
+  /* =========================================================
+     PAYMENT
+  ========================================================= */
+
+  const serviceSelect =
+    document.getElementById(
+      "service"
+    );
+
+  const paymentSection =
+    document.getElementById(
+      "paymentSection"
+    );
+
+  const paymentMethod =
+    document.getElementById(
+      "paymentMethod"
+    );
+
+  const paymentStatus =
+    document.getElementById(
+      "paymentStatus"
+    );
+
+
+  /* =========================================================
+     PRICE ELEMENTS
+  ========================================================= */
+
+  const summaryServiceName =
+    document.getElementById(
+      "summaryServiceName"
+    );
+
+  const summaryContactMethod =
+    document.getElementById(
+      "summaryContactMethod"
+    );
+
+  const summarySchedule =
+    document.getElementById(
+      "summarySchedule"
+    );
+
+  const summaryServicePrice =
+    document.getElementById(
+      "summaryServicePrice"
+    );
+
+  const summaryServiceFee =
+    document.getElementById(
+      "summaryServiceFee"
+    );
+
+  const summaryTotal =
+    document.getElementById(
+      "summaryTotal"
+    );
+
+  const languageSwitcher =
+    document.getElementById(
+      "languageSwitcher"
+    );
+
+  const preferredContact =
+    document.getElementById(
+      "preferredContact"
+    );
+
+  const preferredDateInput =
+    document.getElementById(
+      "preferredDate"
+    );
+
+  const preferredTimeInput =
+    document.getElementById(
+      "preferredTime"
+    );
+
+  const estimatedAmountInput =
+    document.getElementById(
+      "estimatedAmount"
+    );
+
+  const servicePriceInput =
+    document.getElementById(
+      "servicePrice"
+    );
+
+  const serviceFeeInput =
+    document.getElementById(
+      "serviceFee"
+    );
+
+  const firebaseStatus =
+    document.getElementById(
+      "firebaseStatus"
+    );
+
+
+  /* =========================================================
+     PRICE DATA
+  ========================================================= */
+
+  let servicePrices = {};
+
+  let serviceFees = {};
+
+  const translations = {
+    en: {
+      introText: "Complete the form below to request a Pharma Luz pharmaceutical or healthcare service. Provide accurate information so our team can understand your needs and respond appropriately.",
+      otherServiceLink: "Need another service? Open other requests form",
+      personalInfoTitle: "Personal Information",
+      personalInfoText: "Tell us how we can contact you.",
+      fullNameLabel: "Full Name",
+      fullNamePlaceholder: "Enter your full name",
+      phoneLabel: "Phone Number",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "Email Address",
+      emailPlaceholder: "example@email.com",
+      preferredContactLabel: "Preferred Contact Method",
+      serviceInfoTitle: "Service Information",
+      serviceInfoText: "Choose the service you are interested in.",
+      serviceNeededLabel: "Service Needed",
+      receiptTitle: "Estimated Price Summary",
+      receiptBadge: "BEFORE SUBMISSION",
+      receiptServiceLabel: "Service",
+      receiptContactLabel: "Contact Method",
+      receiptScheduleLabel: "Preferred Date & Time",
+      receiptPriceLabel: "Service Price",
+      receiptFeeLabel: "Service Fee",
+      receiptTotalLabel: "Estimated Total",
+      receiptNote: "This is an estimated amount based on the selected service. Final costs may be confirmed by Pharma Luz after reviewing your request.",
+      preferredDateLabel: "Preferred Date",
+      preferredTimeLabel: "Preferred Time",
+      paymentInfoText: "Payment details and instructions will be confirmed by Pharma Luz after your request is reviewed.",
+      locationTitle: "Location",
+      locationText: "Help us know where the service is needed.",
+      districtLabel: "District",
+      sectorLabel: "Sector",
+      addressLabel: "Address / Location Details",
+      requestDetailsTitle: "Request Details",
+      requestDetailsText: "Give us more information about what you need.",
+      detailsLabel: "Describe Your Request",
+      referenceLabel: "Additional Information",
+      documentTitle: "Supporting Document",
+      documentText: "Attach a document only if relevant.",
+      uploadDocLabel: "Upload Document",
+      uploadDocText: "PDF, JPG or PNG — optional",
+      consentText: "I confirm that the information I have provided is accurate and I agree to be contacted by Pharma Luz regarding this service request.",
+      submitButtonText: "Submit Service Request",
+      submitHintText: "We will review your request and contact you using your preferred contact method.",
+      defaultServiceText: "Select a service",
+      defaultContactText: "Not selected",
+      defaultScheduleText: "Not set yet"
+    },
+    fr: {
+      introText: "Remplissez le formulaire ci-dessous pour demander un service pharmaceutique ou de santé de Pharma Luz. Renseignez des informations précises pour que notre équipe comprenne vos besoins et réponde de manière appropriée.",
+      otherServiceLink: "Besoin d'un autre service ? Ouvrez le formulaire des autres demandes",
+      personalInfoTitle: "Informations personnelles",
+      personalInfoText: "Dites-nous comment vous joindre.",
+      fullNameLabel: "Nom complet",
+      fullNamePlaceholder: "Entrez votre nom complet",
+      phoneLabel: "Numéro de téléphone",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "Adresse e-mail",
+      emailPlaceholder: "exemple@email.com",
+      preferredContactLabel: "Méthode de contact préférée",
+      serviceInfoTitle: "Informations sur le service",
+      serviceInfoText: "Choisissez le service qui vous intéresse.",
+      serviceNeededLabel: "Service demandé",
+      receiptTitle: "Résumé du prix estimé",
+      receiptBadge: "AVANT SOUMISSION",
+      receiptServiceLabel: "Service",
+      receiptContactLabel: "Méthode de contact",
+      receiptScheduleLabel: "Date et heure préférées",
+      receiptPriceLabel: "Prix du service",
+      receiptFeeLabel: "Frais de service",
+      receiptTotalLabel: "Total estimé",
+      receiptNote: "Il s'agit d'un montant estimé basé sur le service sélectionné. Les coûts finaux peuvent être confirmés par Pharma Luz après examen de votre demande.",
+      preferredDateLabel: "Date préférée",
+      preferredTimeLabel: "Heure préférée",
+      paymentInfoText: "Les détails et instructions de paiement seront confirmés par Pharma Luz après examen de votre demande.",
+      locationTitle: "Localisation",
+      locationText: "Aidez-nous à savoir où le service est nécessaire.",
+      districtLabel: "District",
+      sectorLabel: "Secteur",
+      addressLabel: "Adresse / détails de localisation",
+      requestDetailsTitle: "Détails de la demande",
+      requestDetailsText: "Donnez-nous plus d'informations sur ce dont vous avez besoin.",
+      detailsLabel: "Décrivez votre demande",
+      referenceLabel: "Informations complémentaires",
+      documentTitle: "Document de support",
+      documentText: "Joignez un document uniquement si nécessaire.",
+      uploadDocLabel: "Téléverser un document",
+      uploadDocText: "PDF, JPG ou PNG — facultatif",
+      consentText: "Je confirme que les informations fournies sont exactes et j'accepte d'être contacté par Pharma Luz concernant cette demande de service.",
+      submitButtonText: "Soumettre la demande",
+      submitHintText: "Nous examinerons votre demande et vous contacterons selon votre méthode de contact préférée.",
+      defaultServiceText: "Sélectionner un service",
+      defaultContactText: "Non sélectionné",
+      defaultScheduleText: "Non défini"
+    },
+    rw: {
+      introText: "Uzuza ubu buryo hakurya kugirango usabe serivise ya Pharma Luz. Tanga amakuru yizewe kugira team yacu ibashe kumva ibikenewe kandi igasubiza neza.",
+      otherServiceLink: "Ukeneye undi serivise? Fungura ifishi y'ibindi bisabwa",
+      personalInfoTitle: "Amakuru y'umuntu",
+      personalInfoText: "Tubwire uko dushobora kuguhamagara.",
+      fullNameLabel: "Amazina y'uzuye",
+      fullNamePlaceholder: "Andika amazina yawe",
+      phoneLabel: "Numero ya telefoni",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "Imeyili",
+      emailPlaceholder: "urugero@email.com",
+      preferredContactLabel: "Uburyo bw'itumanaho ukunda",
+      serviceInfoTitle: "Amakuru ya serivise",
+      serviceInfoText: "Hitamo serivise ushaka.",
+      serviceNeededLabel: "Serivise ishakiwe",
+      receiptTitle: "Incamake y'igiciro cyagenwe",
+      receiptBadge: "MBERE YO KORESHA",
+      receiptServiceLabel: "Serivise",
+      receiptContactLabel: "Uburyo bwo guhamagara",
+      receiptScheduleLabel: "Itariki n'igihe ukunda",
+      receiptPriceLabel: "Igiciro cya serivise",
+      receiptFeeLabel: "Iciro cy'inkunga",
+      receiptTotalLabel: "Igiteranyo cyagenwe",
+      receiptNote: "Iyi ni ingengo y'igiciro gishingiwe ku serivise yahiswemo. Igiciro cyanya kizemezwa na Pharma Luz nyuma yo gusuzuma ubusabe bwawe.",
+      preferredDateLabel: "Itariki ukunda",
+      preferredTimeLabel: "Igihe ukunda",
+      paymentInfoText: "Amakuru y'ishuri ry'ayandi mafaranga azemezwa na Pharma Luz nyuma yo gusuzuma ubusabe bwawe.",
+      locationTitle: "Ahantu",
+      locationText: "Tubwire aho serivise ikenewe.",
+      districtLabel: "Akarere",
+      sectorLabel: "Umurenge",
+      addressLabel: "Aderesi / Ibiranga ahantu",
+      requestDetailsTitle: "Amakuru y'ubusabe",
+      requestDetailsText: "Tanga andi makuru ku cyo ukeneye.",
+      detailsLabel: "Sobanura ubusabe bwawe",
+      referenceLabel: "Amakuru y'inyongera",
+      documentTitle: "Dosiye y'inkunga",
+      documentText: "Shyira dosiye gusa niba ari ngombwa.",
+      uploadDocLabel: "Kohereza dosiye",
+      uploadDocText: "PDF, JPG cyangwa PNG — byihutirwa",
+      consentText: "Nemeza ko amakuru natanze ari ukuri kandi nemera ko Pharma Luz izambwira ku bijyanye n'ubu busabe.",
+      submitButtonText: "Ohereza ubusabe",
+      submitHintText: "Tuzasuzuma ubusabe bwawe kandi tuguhamagare mu buryo ukunda.",
+      defaultServiceText: "Hitamo serivise",
+      defaultContactText: "Nta buryo bwahiswemo",
+      defaultScheduleText: "Nta gihe cyashyizwe"
+    },
+    sw: {
+      introText: "Jaza fomu hapa kuomba huduma ya Pharma Luz ya dawa au afya. Toa taarifa sahihi ili timu yetu iweleze mahitaji yako na kujibu ipasavyo.",
+      otherServiceLink: "Unahitaji huduma nyingine? Fungua fomu ya maombi mengine",
+      personalInfoTitle: "Taarifa za mtu",
+      personalInfoText: "Tuambie jinsi ya kukupigia simu au kukutumia ujumbe.",
+      fullNameLabel: "Jina Kamili",
+      fullNamePlaceholder: "Andika jina lako kamili",
+      phoneLabel: "Namba ya Simu",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "Anwani ya Barua pepe",
+      emailPlaceholder: "mfano@email.com",
+      preferredContactLabel: "Njia ya Mawasiliano unayoipenda",
+      serviceInfoTitle: "Taarifa za Huduma",
+      serviceInfoText: "Chagua huduma unayotaka.",
+      serviceNeededLabel: "Huduma inayohitajika",
+      receiptTitle: "Muhtasari wa Gharama inayokadiriwa",
+      receiptBadge: "KABLA YA KUTUMA",
+      receiptServiceLabel: "Huduma",
+      receiptContactLabel: "Njia ya Mawasiliano",
+      receiptScheduleLabel: "Tarehe na Wakati uliochagua",
+      receiptPriceLabel: "Bei ya Huduma",
+      receiptFeeLabel: "Ada ya Huduma",
+      receiptTotalLabel: "Jumla Inayokadiriwa",
+      receiptNote: "Hii ni makadirio kulingana na huduma iliyochaguliwa. Gharama ya mwisho inaweza kuthibitishwa na Pharma Luz baada ya kukagua ombi lako.",
+      preferredDateLabel: "Tarehe inayopendelewa",
+      preferredTimeLabel: "Wakati unaopendelewa",
+      paymentInfoText: "Maelezo ya malipo na maelekezo yatahamishwa na Pharma Luz baada ya ombi lako kukaguliwa.",
+      locationTitle: "Mahali",
+      locationText: "Tuambie mahali huduma inahitajika.",
+      districtLabel: "Wilaya",
+      sectorLabel: "Sekta",
+      addressLabel: "Anwani / Maelezo ya Mahali",
+      requestDetailsTitle: "Maelezo ya Ombi",
+      requestDetailsText: "Tupa maelezo zaidi kuhusu unachohitaji.",
+      detailsLabel: "Eleza Ombi Lako",
+      referenceLabel: "Taarifa za Ziada",
+      documentTitle: "Nyaraka za Msaada",
+      documentText: "Ambatisha hati ikiwa inahitajika tu.",
+      uploadDocLabel: "Pakia Nyaraka",
+      uploadDocText: "PDF, JPG au PNG — si lazima",
+      consentText: "Ninathibitisha kuwa taarifa nilizotoa ni sahihi na nakubali kuwasiliana na Pharma Luz kuhusu ombi hili la huduma.",
+      submitButtonText: "Wasilisha Ombi la Huduma",
+      submitHintText: "Tutakagua ombi lako na kukutumia ujumbe kwa njia unayoipenda.",
+      defaultServiceText: "Chagua huduma",
+      defaultContactText: "Haijachaguliwa",
+      defaultScheduleText: "Bado haijawekwa"
+    },
+    es: {
+      introText: "Complete el formulario a continuación para solicitar un servicio farmacéutico o de salud de Pharma Luz. Proporcione información precisa para que nuestro equipo comprenda sus necesidades y responda de manera apropiada.",
+      otherServiceLink: "¿Necesita otro servicio? Abra el formulario de otras solicitudes",
+      personalInfoTitle: "Información personal",
+      personalInfoText: "Cuéntenos cómo podemos contactarle.",
+      fullNameLabel: "Nombre completo",
+      fullNamePlaceholder: "Ingrese su nombre completo",
+      phoneLabel: "Número de teléfono",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "Correo electrónico",
+      emailPlaceholder: "ejemplo@email.com",
+      preferredContactLabel: "Método de contacto preferido",
+      serviceInfoTitle: "Información del servicio",
+      serviceInfoText: "Elija el servicio que le interesa.",
+      serviceNeededLabel: "Servicio requerido",
+      receiptTitle: "Resumen del precio estimado",
+      receiptBadge: "ANTES DE ENVIAR",
+      receiptServiceLabel: "Servicio",
+      receiptContactLabel: "Método de contacto",
+      receiptScheduleLabel: "Fecha y hora preferidas",
+      receiptPriceLabel: "Precio del servicio",
+      receiptFeeLabel: "Tarifa del servicio",
+      receiptTotalLabel: "Total estimado",
+      receiptNote: "Esta es una cantidad estimada según el servicio seleccionado. Los costos finales pueden confirmarse por Pharma Luz después de revisar su solicitud.",
+      preferredDateLabel: "Fecha preferida",
+      preferredTimeLabel: "Hora preferida",
+      paymentInfoText: "Los detalles e instrucciones de pago serán confirmados por Pharma Luz después de revisar su solicitud.",
+      locationTitle: "Ubicación",
+      locationText: "Ayúdenos a saber dónde se necesita el servicio.",
+      districtLabel: "Distrito",
+      sectorLabel: "Sector",
+      addressLabel: "Dirección / detalles de ubicación",
+      requestDetailsTitle: "Detalles de la solicitud",
+      requestDetailsText: "Danos más información sobre lo que necesitas.",
+      detailsLabel: "Describe tu solicitud",
+      referenceLabel: "Información adicional",
+      documentTitle: "Documento de respaldo",
+      documentText: "Adjunte un documento solo si es relevante.",
+      uploadDocLabel: "Subir documento",
+      uploadDocText: "PDF, JPG o PNG — opcional",
+      consentText: "Confirmo que la información proporcionada es correcta y acepto que Pharma Luz se comunique conmigo respecto a esta solicitud de servicio.",
+      submitButtonText: "Enviar solicitud de servicio",
+      submitHintText: "Revisaremos su solicitud y nos pondremos en contacto con usted según su método preferido.",
+      defaultServiceText: "Seleccione un servicio",
+      defaultContactText: "No seleccionado",
+      defaultScheduleText: "Aún no establecido"
+    },
+    pt: {
+      introText: "Preencha o formulário abaixo para solicitar um serviço farmacêutico ou de saúde da Pharma Luz. Forneça informações precisas para que nossa equipe entenda suas necessidades e responda adequadamente.",
+      otherServiceLink: "Precisa de outro serviço? Abra o formulário de outras solicitações",
+      personalInfoTitle: "Informações pessoais",
+      personalInfoText: "Diga-nos como podemos entrar em contato com você.",
+      fullNameLabel: "Nome completo",
+      fullNamePlaceholder: "Digite seu nome completo",
+      phoneLabel: "Número de telefone",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "E-mail",
+      emailPlaceholder: "exemplo@email.com",
+      preferredContactLabel: "Método de contato preferido",
+      serviceInfoTitle: "Informações do serviço",
+      serviceInfoText: "Escolha o serviço de seu interesse.",
+      serviceNeededLabel: "Serviço necessário",
+      receiptTitle: "Resumo do preço estimado",
+      receiptBadge: "ANTES DO ENVIO",
+      receiptServiceLabel: "Serviço",
+      receiptContactLabel: "Método de contato",
+      receiptScheduleLabel: "Data e hora preferidas",
+      receiptPriceLabel: "Preço do serviço",
+      receiptFeeLabel: "Taxa do serviço",
+      receiptTotalLabel: "Total estimado",
+      receiptNote: "Este é um valor estimado com base no serviço selecionado. Os custos finais podem ser confirmados pela Pharma Luz após revisar sua solicitação.",
+      preferredDateLabel: "Data preferida",
+      preferredTimeLabel: "Hora preferida",
+      paymentInfoText: "Os detalhes e instruções de pagamento serão confirmados pela Pharma Luz após a revisão da sua solicitação.",
+      locationTitle: "Localização",
+      locationText: "Ajude-nos a saber onde o serviço é necessário.",
+      districtLabel: "Distrito",
+      sectorLabel: "Setor",
+      addressLabel: "Endereço / detalhes da localização",
+      requestDetailsTitle: "Detalhes da solicitação",
+      requestDetailsText: "Forneça mais informações sobre o que você precisa.",
+      detailsLabel: "Descreva sua solicitação",
+      referenceLabel: "Informações adicionais",
+      documentTitle: "Documento de apoio",
+      documentText: "Anexe um documento apenas se for relevante.",
+      uploadDocLabel: "Carregar documento",
+      uploadDocText: "PDF, JPG ou PNG — opcional",
+      consentText: "Confirmo que as informações fornecidas são corretas e concordo que a Pharma Luz entre em contato comigo sobre esta solicitação de serviço.",
+      submitButtonText: "Enviar solicitação de serviço",
+      submitHintText: "Vamos revisar sua solicitação e entrar em contato com você pelo método preferido.",
+      defaultServiceText: "Selecione um serviço",
+      defaultContactText: "Não selecionado",
+      defaultScheduleText: "Ainda não definido"
+    },
+    ar: {
+      introText: "أكمل النموذج أدناه لطلب خدمة صيدلانية أو صحية من Pharma Luz. قدم معلومات دقيقة بحيث يفهم فريقنا احتياجاتك ويجيب بشكل مناسب.",
+      otherServiceLink: "هل تحتاج إلى خدمة أخرى؟ افتح نموذج الطلبات الأخرى",
+      personalInfoTitle: "المعلومات الشخصية",
+      personalInfoText: "أخبرنا بكيفية التواصل معك.",
+      fullNameLabel: "الاسم الكامل",
+      fullNamePlaceholder: "أدخل اسمك الكامل",
+      phoneLabel: "رقم الهاتف",
+      phonePlaceholder: "+250 7XX XXX XXX",
+      emailLabel: "البريد الإلكتروني",
+      emailPlaceholder: "example@email.com",
+      preferredContactLabel: "طريقة الاتصال المفضلة",
+      serviceInfoTitle: "معلومات الخدمة",
+      serviceInfoText: "اختر الخدمة التي تهمك.",
+      serviceNeededLabel: "الخدمة المطلوبة",
+      receiptTitle: "ملخص السعر المقدر",
+      receiptBadge: "قبل الإرسال",
+      receiptServiceLabel: "الخدمة",
+      receiptContactLabel: "طريقة الاتصال",
+      receiptScheduleLabel: "التاريخ والوقت المفضل",
+      receiptPriceLabel: "سعر الخدمة",
+      receiptFeeLabel: "رسوم الخدمة",
+      receiptTotalLabel: "الإجمالي المقدر",
+      receiptNote: "هذا مبلغ تقديري بناءً على الخدمة المختارة. قد يتم تأكيد التكاليف النهائية من قبل Pharma Luz بعد مراجعة طلبك.",
+      preferredDateLabel: "التاريخ المفضل",
+      preferredTimeLabel: "الوقت المفضل",
+      paymentInfoText: "سيتم تأكيد تفاصيل الدفع والتعليمات من قبل Pharma Luz بعد مراجعة طلبك.",
+      locationTitle: "الموقع",
+      locationText: "ساعدنا في معرفة مكان الحاجة إلى الخدمة.",
+      districtLabel: "المنطقة",
+      sectorLabel: "القطاع",
+      addressLabel: "العنوان / تفاصيل الموقع",
+      requestDetailsTitle: "تفاصيل الطلب",
+      requestDetailsText: "أعطنا المزيد من المعلومات عما تحتاجه.",
+      detailsLabel: "صف طلبك",
+      referenceLabel: "معلومات إضافية",
+      documentTitle: "مستند داعم",
+      documentText: "أرفق مستندًا فقط إذا كان ذا صلة.",
+      uploadDocLabel: "رفع مستند",
+      uploadDocText: "PDF أو JPG أو PNG — اختياري",
+      consentText: "أؤكد أن المعلومات التي قدمتها دقيقة وأوافق على التواصل معي من قبل Pharma Luz بشأن طلب الخدمة هذا.",
+      submitButtonText: "إرسال طلب الخدمة",
+      submitHintText: "سنراجع طلبك وسنتواصل معك باستخدام طريقة الاتصال المفضلة لديك.",
+      defaultServiceText: "اختر خدمة",
+      defaultContactText: "غير محدد",
+      defaultScheduleText: "لم يتم تحديده بعد"
+    }
+  };
+
+
+  function formatDateForSummary(dateValue) {
+    if (!dateValue) return "";
+    const date = new Date(dateValue);
+    if (Number.isNaN(date.getTime())) return dateValue;
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    }).format(date);
+  }
+
+
+  function updateLanguageText(lang) {
+    const dictionary = translations[lang] || translations.en;
+
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+      const key = element.getAttribute("data-i18n");
+      if (dictionary[key]) {
+        element.textContent = dictionary[key];
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+      const key = element.getAttribute("data-i18n-placeholder");
+      if (dictionary[key]) {
+        element.setAttribute("placeholder", dictionary[key]);
+      }
+    });
+
+    if (languageSwitcher) {
+      languageSwitcher.value = lang;
+    }
+  }
+
+  /* =========================================================
+     PAID SERVICES
+  ========================================================= */
+
+  const paidServices = [
+
+    "prescription",
+
+    "medication",
+
+    "delivery",
+
+    "health-screening",
+
+    "vaccination",
+
+    "chronic-care",
+
+    "first-aid"
+
+  ];
+
+
+  /* =========================================================
+     RWF FORMAT
+  ========================================================= */
+
+  function formatRwf(amount) {
+
+    return new Intl.NumberFormat(
+      "en-RW"
+    ).format(amount) + " RWF";
+
+  }
+
+
+  /* =========================================================
+     LOAD WEBSITE NOTICE
+  ========================================================= */
+
+  async function loadWebsiteNotice() {
+    try {
+      const snapshot = await getDoc(doc(db, "websiteContent", "homepage"));
+      if (!snapshot.exists()) return;
+
+      const data = snapshot.data();
+      const noticeText = data.notice || data.websiteNotice || "";
+      const noticeEnabled = data.noticeEnabled !== false;
+
+      if (!websiteNotice) return;
+
+      if (noticeText && noticeEnabled) {
+        websiteNotice.innerHTML = `<strong>Notice:</strong> ${noticeText}`;
+        websiteNotice.style.display = "block";
+      } else {
+        websiteNotice.style.display = "none";
+        websiteNotice.innerHTML = "";
+      }
+    } catch (error) {
+      console.error("Website notice loading error:", error);
+    }
+  }
+
+
+  /* =========================================================
+     LOAD SERVICES
+  ========================================================= */
+
+  async function loadServices() {
+
+    try {
+
+      firebaseStatus.textContent =
+        "Loading current prices...";
+
+
+      const snapshot =
+        await getDocs(
+          collection(
+            db,
+            "services"
+          )
+        );
+
+
+      servicePrices = {};
+
+      serviceFees = {};
+
+
+      snapshot.forEach(
+        doc => {
+
+          const data =
+            doc.data();
+
+
+          servicePrices[doc.id] =
+            Number(
+              data.price || 0
+            );
+
+
+          serviceFees[doc.id] =
+            Number(
+              data.fee || 0
+            );
+
+        }
+      );
+
+
+      firebaseStatus.textContent =
+        "✓ Current prices loaded from Pharma Luz";
+
+
+      updatePriceSummary();
+
+
+    } catch (error) {
+
+      console.error(
+        "Error loading services:",
+        error
+      );
+
+
+      firebaseStatus.textContent =
+        "⚠ Unable to load current prices";
+
+
+      showMessage(
+        "Unable to load current service prices. Please try again.",
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     PRICE SUMMARY
+  ========================================================= */
+
+  function updatePriceSummary() {
+
+    const selectedService =
+      serviceSelect.value;
+
+
+    const selectedOption =
+      serviceSelect.options[
+        serviceSelect.selectedIndex
+      ];
+
+
+    const serviceName =
+      selectedService
+        ? selectedOption.textContent.trim()
+        : (translations[localStorage.getItem("pharmaLuzLanguage") || "en"]?.defaultServiceText || "Select a service");
+
+    const selectedContact = preferredContact.value;
+    const contactLabel = selectedContact
+      ? preferredContact.options[preferredContact.selectedIndex]?.textContent || selectedContact
+      : (translations[localStorage.getItem("pharmaLuzLanguage") || "en"]?.defaultContactText || "Not selected");
+
+    const scheduleText = preferredDateInput.value || preferredTimeInput.value
+      ? [preferredDateInput.value ? formatDateForSummary(preferredDateInput.value) : "", preferredTimeInput.value ? preferredTimeInput.value : ""].filter(Boolean).join(" • ")
+      : (translations[localStorage.getItem("pharmaLuzLanguage") || "en"]?.defaultScheduleText || "Not set yet");
+
+    const price =
+      servicePrices[
+        selectedService
+      ] || 0;
+
+
+    const fee =
+      serviceFees[
+        selectedService
+      ] || 0;
+
+
+    const total =
+      price + fee;
+
+
+    summaryServiceName.textContent =
+      serviceName;
+
+    summaryContactMethod.textContent =
+      contactLabel;
+
+    summarySchedule.textContent =
+      scheduleText;
+
+
+    summaryServicePrice.textContent =
+      formatRwf(price);
+
+
+    summaryServiceFee.textContent =
+      formatRwf(fee);
+
+
+    summaryTotal.textContent =
+      formatRwf(total);
+
+
+    estimatedAmountInput.value =
+      total;
+
+
+    servicePriceInput.value =
+      price;
+
+
+    serviceFeeInput.value =
+      fee;
+
+  }
+
+
+  /* =========================================================
+     PAYMENT REQUIREMENT
+  ========================================================= */
+
+  function checkPaymentRequirement() {
+
+    const selectedService =
+      serviceSelect.value;
+
+
+    paymentSection.style.display =
+      "block";
+
+
+    if (
+      paidServices.includes(
+        selectedService
+      )
+    ) {
+
+      paymentMethod.required =
+        true;
+
+
+      paymentStatus.value =
+        "pending";
+
+    } else {
+
+      paymentMethod.required =
+        false;
+
+
+      paymentMethod.value =
+        "";
+
+
+      paymentStatus.value =
+        "not_required";
+
+    }
+
+  }
+
+
+  /* =========================================================
+     SERVICE CHANGE
+  ========================================================= */
+
+  serviceSelect.addEventListener(
+    "change",
+    () => {
+
+      checkPaymentRequirement();
+
+      updatePriceSummary();
+
+    }
+  );
+
+  preferredContact.addEventListener(
+    "change",
+    updatePriceSummary
+  );
+
+  preferredDateInput.addEventListener(
+    "input",
+    updatePriceSummary
+  );
+
+  preferredTimeInput.addEventListener(
+    "change",
+    updatePriceSummary
+  );
+
+  const savedLanguage = localStorage.getItem("pharmaLuzLanguage") || localStorage.getItem("pharmaLuzSiteLanguage") || "en";
+  if (languageSwitcher) {
+    languageSwitcher.value = savedLanguage;
+    languageSwitcher.addEventListener("change", event => {
+      const selectedLanguage = event.target.value;
+      localStorage.setItem("pharmaLuzLanguage", selectedLanguage);
+      localStorage.setItem("pharmaLuzSiteLanguage", selectedLanguage);
+      updateLanguageText(selectedLanguage);
+    });
+  }
+  updateLanguageText(savedLanguage);
+
+
+  /* =========================================================
+     SUBMIT
+  ========================================================= */
+
+  serviceForm.addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      const consent =
+        document.getElementById(
+          "consent"
+        );
+
+
+      if (!consent.checked) {
+
+        showMessage(
+          "Please confirm the information before submitting.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (
+        paidServices.includes(
+          serviceSelect.value
+        ) &&
+        !paymentMethod.value
+      ) {
+
+        showMessage(
+          "Please select a payment method.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      submitButton.disabled =
+        true;
+
+
+      submitText.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+
+      submitArrow.textContent =
+        "";
+
+
+      formMessage.style.display =
+        "none";
+
+
+      try {
+
+        const formData =
+          new FormData(
+            serviceForm
+          );
+
+
+        const selectedService =
+          serviceSelect.value;
+
+
+        const selectedOption =
+          serviceSelect.options[
+            serviceSelect.selectedIndex
+          ];
+
+
+        const serviceName =
+          selectedOption.textContent.trim();
+
+
+        const price =
+          servicePrices[
+            selectedService
+          ] || 0;
+
+
+        const fee =
+          serviceFees[
+            selectedService
+          ] || 0;
+
+
+        const total =
+          price + fee;
+
+
+        /* =====================================================
+           REQUEST DATA
+        ====================================================== */
+
+        const requestData = {
+
+          fullName:
+            formData.get(
+              "fullName"
+            ) || "",
+
+
+          phone:
+            formData.get(
+              "phone"
+            ) || "",
+
+
+          email:
+            formData.get(
+              "email"
+            ) || "",
+
+
+          preferredContact:
+            formData.get(
+              "preferredContact"
+            ) || "",
+
+
+          service:
+            selectedService,
+
+
+          serviceName:
+            serviceName,
+
+
+          preferredDate:
+            formData.get(
+              "preferredDate"
+            ) || "",
+
+
+          preferredTime:
+            formData.get(
+              "preferredTime"
+            ) || "",
+
+
+          district:
+            formData.get(
+              "district"
+            ) || "",
+
+
+          sector:
+            formData.get(
+              "sector"
+            ) || "",
+
+
+          address:
+            formData.get(
+              "address"
+            ) || "",
+
+
+          details:
+            formData.get(
+              "details"
+            ) || "",
+
+
+          reference:
+            formData.get(
+              "reference"
+            ) || "",
+
+
+          paymentMethod:
+            formData.get(
+              "paymentMethod"
+            ) || "",
+
+
+          paymentStatus:
+            paidServices.includes(
+              selectedService
+            )
+              ? "pending"
+              : "not_required",
+
+
+          servicePrice:
+            price,
+
+
+          serviceFee:
+            fee,
+
+
+          estimatedAmount:
+            total,
+
+
+          status:
+            "new",
+
+
+          createdAt:
+            serverTimestamp()
+
+        };
+
+
+        /* =====================================================
+           SAVE TO FIRESTORE
+        ====================================================== */
+
+        const documentReference =
+          await addDoc(
+
+            collection(
+              db,
+              "serviceRequests"
+            ),
+
+            requestData
+
+          );
+
+
+        console.log(
+          "Service request saved:",
+          documentReference.id
+        );
+
+
+        /* =====================================================
+           SUCCESS
+        ====================================================== */
+
+        showMessage(
+
+          "Thank you! Your service request has been received. Pharma Luz will contact you soon.",
+
+          "success"
+
+        );
+
+
+        serviceForm.reset();
+
+
+        checkPaymentRequirement();
+
+        updatePriceSummary();
+
+
+      } catch (error) {
+
+        console.error(
+          "Service request error:",
+          error
+        );
+
+
+        showMessage(
+
+          "Unable to submit your request. Please check your connection and try again.",
+
+          "error"
+
+        );
+
+      } finally {
+
+        submitButton.disabled =
+          false;
+
+
+        submitText.innerHTML =
+          '<i class="fa-solid fa-paper-plane"></i> Submit Service Request';
+
+
+        submitArrow.textContent =
+          "→";
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     MESSAGE
+  ========================================================= */
+
+  function showMessage(
+    message,
+    type
+  ) {
+
+    formMessage.textContent =
+      message;
+
+
+    formMessage.style.display =
+      "block";
+
+
+    if (
+      type === "success"
+    ) {
+
+      formMessage.style.background =
+        "rgba(25, 200, 120, 0.09)";
+
+      formMessage.style.color =
+        "#64e6a8";
+
+      formMessage.style.border =
+        "1px solid rgba(25, 200, 120, 0.25)";
+
+    } else {
+
+      formMessage.style.background =
+        "rgba(255, 80, 80, 0.08)";
+
+      formMessage.style.color =
+        "#ff8585";
+
+      formMessage.style.border =
+        "1px solid rgba(255, 80, 80, 0.25)";
+
+    }
+
+  }
+
+
+  /* =========================================================
+     INITIALIZE
+  ========================================================= */
+
+  checkPaymentRequirement();
+
+  updatePriceSummary();
+
+  loadWebsiteNotice();
+  loadServices();
+
+</script>
+
+
+</body>
+</html>

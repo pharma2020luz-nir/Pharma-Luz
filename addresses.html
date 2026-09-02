@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="Luz.jpeg">
+  <link rel="shortcut icon" type="image/png" href="Luz.jpeg">
+
+  <title>Our Location | Pharma Luz Ltd</title>
+
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --pl-bg: #061a23;
+      --pl-bg-soft: #0d2b3b;
+      --pl-surface: rgba(10, 27, 35, 0.9);
+      --pl-surface-strong: rgba(8, 20, 28, 0.96);
+      --pl-primary: #4ec6f0;
+      --pl-primary-strong: #2bb5ed;
+      --pl-accent: #7ef0c2;
+      --pl-success: #1fcf8d;
+      --pl-text: #eefcff;
+      --pl-text-soft: #bdced8;
+      --pl-line: rgba(126, 240, 194, 0.16);
+      --shadow: 0 18px 42px rgba(1, 13, 18, 0.38);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(78, 198, 240, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(126, 240, 194, 0.12), transparent 26%),
+        linear-gradient(180deg, #05161d 0%, #07151d 100%);
+      color: var(--pl-text);
+      min-height: 100vh;
+    }
+
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .addresses-page {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(78, 198, 240, 0.12),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(126, 240, 194, 0.10),
+          transparent 26%
+        ),
+        linear-gradient(180deg, #05161d 0%, #07151d 100%);
+
+      color: var(--pl-text);
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .small-hero {
+      min-height: 330px;
+
+      padding: 35px 20px 65px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(3, 37, 58, 0.97),
+          rgba(4, 70, 92, 0.94),
+          rgba(5, 91, 62, 0.92)
+        );
+
+      position: relative;
+      overflow: hidden;
+
+      border-bottom:
+        1px solid rgba(91, 220, 169, 0.15);
+    }
+
+    .small-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      top: -220px;
+      left: -130px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(8, 120, 201, 0.24),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .small-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      right: -160px;
+      bottom: -230px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(15, 143, 79, 0.22),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 55px;
+      height: 55px;
+
+      object-fit: contain;
+
+      padding: 6px;
+
+      border-radius: 13px;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.30);
+    }
+
+    .language-switcher {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(127, 223, 186, 0.35);
+      background: linear-gradient(135deg, rgba(18, 184, 120, 0.12), rgba(18, 152, 232, 0.14));
+      color: #ebfff7;
+      box-shadow: 0 10px 22px rgba(18, 184, 120, 0.12);
+    }
+
+    .language-switcher i {
+      color: #7ef2c0;
+      font-size: 0.8rem;
+    }
+
+    .language-switcher select {
+      background: transparent;
+      border: none;
+      color: #effff9;
+      font: inherit;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      padding-right: 4px;
+    }
+
+    .language-switcher select option {
+      background: #07151d;
+      color: #effff9;
+    }
+
+    /* =========================================================
+       HERO CONTENT
+    ========================================================= */
+
+    .hero-simple {
+      max-width: 900px;
+
+      margin: 60px auto 0;
+
+      text-align: center;
+
+      display: block;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .hero-simple h1 {
+      margin: 0 0 14px;
+
+      font-size: clamp(34px, 6vw, 58px);
+
+      font-weight: 900;
+
+      letter-spacing: -1px;
+
+      color: white;
+
+      text-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-simple h1::after {
+      content: "";
+
+      display: block;
+
+      width: 65px;
+      height: 4px;
+
+      margin: 16px auto 0;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #0878c9,
+          #25d889
+        );
+    }
+
+    .hero-simple p {
+      max-width: 700px;
+
+      margin: 20px auto 0;
+
+      color: #c5dce3;
+
+      line-height: 1.75;
+
+      font-size: 15px;
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .addresses-main {
+      width: 100%;
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 65px 20px 30px;
+
+      flex: 1;
+    }
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .addresses-intro {
+      text-align: center;
+
+      max-width: 750px;
+
+      margin: 0 auto 40px;
+    }
+
+    .addresses-intro h2 {
+      margin: 0 0 12px;
+
+      color: #ffffff;
+
+      font-size: 29px;
+
+      font-weight: 800;
+    }
+
+    .addresses-intro h2::after {
+      content: "";
+
+      display: block;
+
+      width: 45px;
+      height: 3px;
+
+      margin: 12px auto 0;
+
+      border-radius: 5px;
+
+      background: #12a96a;
+    }
+
+    .addresses-intro p {
+      color: #a9c1c9;
+
+      margin: 15px 0 0;
+
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       LOCATION GRID
+    ========================================================= */
+
+    .addresses-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(280px, 680px);
+
+      justify-content: center;
+
+      gap: 22px;
+    }
+
+    /* =========================================================
+       LOCATION CARD
+    ========================================================= */
+
+    .address-card {
+      position: relative;
+
+      padding: 32px;
+
+      min-height: 340px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11, 29, 39, 0.96),
+          rgba(7, 22, 30, 0.94)
+        );
+
+      border:
+        1px solid rgba(126, 190, 211, 0.14);
+
+      border-radius: 22px;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .address-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #0878c9,
+          #0f8f4f
+        );
+    }
+
+    .address-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(25, 190, 132, 0.35);
+
+      box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.40);
+    }
+
+    /* =========================================================
+       LOCATION ICON
+    ========================================================= */
+
+    .address-icon {
+      width: 56px;
+      height: 56px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0878c9,
+          #0f8f4f
+        );
+
+      color: white;
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+
+      box-shadow:
+        0 9px 25px rgba(8, 120, 201, 0.22);
+
+      animation: locationPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes locationPulse {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow:
+          0 9px 25px rgba(8, 120, 201, 0.22);
+      }
+
+      50% {
+        transform: scale(1.04);
+        box-shadow:
+          0 12px 30px rgba(15, 143, 79, 0.30);
+      }
+    }
+
+    /* =========================================================
+       LOCATION TEXT
+    ========================================================= */
+
+    .address-card h3 {
+      margin: 0 0 15px;
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+      font-weight: 800;
+    }
+
+    .address-card p {
+      margin: 7px 0;
+
+      line-height: 1.7;
+
+      color: #aec4cc;
+
+      font-size: 14px;
+    }
+
+    .address-card strong {
+      color: #65dba8;
+
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       MAP BUTTON
+    ========================================================= */
+
+    .address-link {
+      margin-top: auto;
+
+      padding-top: 25px;
+    }
+
+    .small-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 12px 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pl-primary),
+          var(--pl-accent)
+        );
+
+      color: #041a25;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      box-shadow: 0 12px 24px rgba(46, 178, 234, 0.25);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+    }
+
+    .small-link:hover {
+      transform: translateY(-2px);
+
+      filter: brightness(1.08);
+
+      box-shadow:
+        0 12px 25px rgba(8, 120, 201, 0.28);
+    }
+
+    .small-link:active {
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       MAP SECTION
+    ========================================================= */
+
+    .map-section {
+      margin-top: 65px;
+    }
+
+    .map-section h2 {
+      text-align: center;
+
+      margin: 0 0 25px;
+
+      color: white;
+
+      font-size: 28px;
+
+      font-weight: 800;
+    }
+
+    .map-section h2::after {
+      content: "";
+
+      display: block;
+
+      width: 45px;
+      height: 3px;
+
+      margin: 12px auto 0;
+
+      border-radius: 5px;
+
+      background: #12a96a;
+    }
+
+    .map-panel {
+      width: 100%;
+
+      height: 430px;
+
+      overflow: hidden;
+
+      border-radius: 22px;
+
+      border:
+        1px solid rgba(105, 180, 202, 0.18);
+
+      box-shadow: var(--shadow);
+
+      background: #0c1c24;
+
+      padding: 5px;
+    }
+
+    .map-panel iframe {
+      width: 100%;
+
+      height: 100%;
+
+      border: 0;
+
+      border-radius: 14px;
+
+      filter:
+        brightness(0.78)
+        contrast(1.08)
+        saturate(0.85);
+    }
+
+    /* =========================================================
+       BACK HOME
+    ========================================================= */
+
+    .addresses-home {
+      display: flex;
+
+      justify-content: center;
+
+      padding: 25px 20px 55px;
+
+      background: #07151d;
+    }
+
+    .nav-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 12px 21px;
+
+      background:
+        rgba(255, 255, 255, 0.04);
+
+      color: #d8edf3;
+
+      border:
+        1px solid rgba(89, 183, 207, 0.30);
+
+      border-radius: 9px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.20);
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background:
+        linear-gradient(
+          135deg,
+          #0878c9,
+          #0f8f4f
+        );
+
+      color: white;
+
+      border-color: transparent;
+
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .addresses-footer {
+      background:
+        linear-gradient(
+          120deg,
+          #031f32,
+          #043b68,
+          #075b62,
+          #087a45,
+          #043b68
+        );
+
+      background-size: 300% 300%;
+
+      animation:
+        locationFooterGradient 12s ease infinite;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 25px 15px;
+
+      border-top:
+        3px solid #10a96b;
+
+      box-shadow:
+        0 -8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .addresses-footer p {
+      margin: 5px 0;
+
+      color: #d9edf2;
+
+      font-size: 12px;
+    }
+
+    .addresses-footer strong {
+      color: #62dfa5;
+    }
+
+    @keyframes locationFooterGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* =========================================================
+       RESPONSIVE — TABLET / MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .small-hero {
+        min-height: 300px;
+
+        padding:
+          25px 16px 50px;
+      }
+
+      .hero-simple {
+        margin-top: 45px;
+      }
+
+      .hero-simple h1 {
+        font-size: 36px;
+      }
+
+      .addresses-main {
+        padding:
+          45px 16px 25px;
+      }
+
+      .addresses-intro h2 {
+        font-size: 25px;
+      }
+
+      .address-card {
+        padding: 25px;
+      }
+
+      .map-section {
+        margin-top: 50px;
+      }
+
+      .map-panel {
+        height: 350px;
+      }
+
+      .small-link {
+        width: 100%;
+      }
+
+      .addresses-home {
+        padding:
+          20px 16px 40px;
+      }
+
+      .nav-link {
+        width: 100%;
+
+        justify-content: center;
+      }
+    }
+
+    /* =========================================================
+       RESPONSIVE — SMALL PHONES
+    ========================================================= */
+
+    @media (max-width: 480px) {
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-simple h1 {
+        font-size: 31px;
+      }
+
+      .hero-simple p {
+        font-size: 14px;
+      }
+
+      .address-card {
+        padding: 22px;
+
+        min-height: 320px;
+      }
+
+      .address-card h3 {
+        font-size: 20px;
+      }
+
+      .address-card p {
+        font-size: 13px;
+      }
+
+      .address-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+      }
+
+      .map-panel {
+        height: 300px;
+
+        padding: 4px;
+      }
+
+      .addresses-home {
+        padding:
+          20px 16px 35px;
+      }
+
+      .addresses-footer {
+        padding:
+          22px 12px;
+      }
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+    ========================================================= */
+
+    .small-link:focus-visible,
+    .nav-link:focus-visible {
+      outline: 3px solid rgba(37, 216, 137, 0.65);
+
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="addresses-page">
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="small-hero">
+
+  <nav class="navbar">
+
+    <div class="brand">
+
+      <img
+        src="Luz.jpeg"
+        alt="Pharma Luz Ltd logo"
+      >
+
+    </div>
+
+    <label class="language-switcher" aria-label="Select website language">
+      <i class="fa-solid fa-globe"></i>
+      <select id="languageSwitcher">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="rw">RW</option>
+        <option value="sw">SW</option>
+        <option value="es">ES</option>
+        <option value="pt">PT</option>
+        <option value="ar">AR</option>
+      </select>
+    </label>
+
+  </nav>
+
+  <div class="hero-simple">
+
+    <h1 data-i18n="pageTitle">
+      Our Location
+    </h1>
+
+    <p data-i18n="pageIntro">
+      Find Pharma Luz Ltd and visit us for reliable
+      pharmaceutical services and professional support.
+    </p>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="addresses-main">
+
+  <section>
+
+    <div class="addresses-intro">
+
+      <h2 data-i18n="sectionTitle">
+        Where to Find Us
+      </h2>
+
+      <p data-i18n="sectionText">
+        Our location is conveniently situated in
+        Kinyinya, Gasabo District, Kigali City.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         PHARMA LUZ LOCATION
+    ================================================== -->
+
+    <div class="addresses-grid">
+
+      <article class="address-card">
+
+        <div class="address-icon">
+          📍
+        </div>
+
+        <h3 data-i18n="locationName">
+          Pharma Luz Ltd
+        </h3>
+
+        <p>
+          <strong data-i18n="addressLabel">Address:</strong><br>
+          <span data-i18n="addressLine1">Murama Cell,</span><br>
+          <span data-i18n="addressLine2">Kinyinya Sector,</span><br>
+          <span data-i18n="addressLine3">Gasabo District,</span><br>
+          <span data-i18n="addressLine4">Kigali City, Rwanda.</span>
+        </p>
+
+        <p>
+          <strong data-i18n="landmarkLabel">Landmark:</strong><br>
+          <span data-i18n="landmarkText">Near the parking station.</span>
+        </p>
+
+        <div class="address-link">
+
+          <a
+            class="small-link"
+            href="https://www.google.com/maps/search/?api=1&query=Murama+Cell+Kinyinya+Sector+Gasabo+District+Kigali+Rwanda"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="mapLink"
+          >
+            📍 Open in Google Maps
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MAP
+  ====================================================== -->
+
+  <section class="map-section">
+
+    <h2 data-i18n="mapTitle">
+      Find Us on the Map
+    </h2>
+
+    <div class="map-panel">
+
+      <iframe
+        src="https://www.google.com/maps?q=Murama+Cell,+Kinyinya,+Kigali,+Rwanda&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        title="Pharma Luz location in Murama Cell, Kinyinya"
+      >
+      </iframe>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- =====================================================
+     BACK TO HOME
+====================================================== -->
+
+<div class="addresses-home">
+
+  <a
+    class="nav-link"
+    href="Pharma Luz ltd.html"
+    data-i18n="backHome"
+  >
+    ← Back to Home
+  </a>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="addresses-footer">
+
+  <p>
+    &copy; 2026 Pharma Luz Ltd.
+    All rights reserved.
+  </p>
+
+  <p>
+    Powered by
+    <strong>ARTSA Labs</strong>
+  </p>
+
+</footer>
+
+  </div>
+
+<script>
+  const translations = {
+    en: {
+      pageTitle: "Our Location",
+      pageIntro: "Find Pharma Luz Ltd and visit us for reliable pharmaceutical services and professional support.",
+      sectionTitle: "Where to Find Us",
+      sectionText: "Our location is conveniently situated in Kinyinya, Gasabo District, Kigali City.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Address:",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Landmark:",
+      landmarkText: "Near the parking station.",
+      mapLink: "Open in Google Maps",
+      mapTitle: "Find Us on the Map",
+      backHome: "← Back to Home"
+    },
+    fr: {
+      pageTitle: "Notre emplacement",
+      pageIntro: "Trouvez Pharma Luz Ltd et visitez-nous pour des services pharmaceutiques fiables et un soutien professionnel.",
+      sectionTitle: "Où nous trouver",
+      sectionText: "Notre emplacement est idéalement situé à Kinyinya, district de Gasabo, ville de Kigali.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Adresse :",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Repère :",
+      landmarkText: "Près du stationnement.",
+      mapLink: "Ouvrir dans Google Maps",
+      mapTitle: "Nous trouver sur la carte",
+      backHome: "← Retour à l'accueil"
+    },
+    rw: {
+      pageTitle: "Ahantu tubarizwa",
+      pageIntro: "Shaka Pharma Luz Ltd usurebere aho uzashakira serivise zizewe n'ubufasha bw'abavuzi.",
+      sectionTitle: "Aho tubarizwa",
+      sectionText: "Ahantu dufite ni hafi ya Kinyinya, Akarere ka Gasabo, Umujyi wa Kigali.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Aderesi :",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Ikimenyetso :",
+      landmarkText: "Hafi y'ahantu h'imizigo.",
+      mapLink: "Fungura ku Google Maps",
+      mapTitle: "Tubarire ku ikarita",
+      backHome: "← Subira ahabanza"
+    },
+    sw: {
+      pageTitle: "Mahali pauli",
+      pageIntro: "Pata Pharma Luz Ltd na ututembeleze kwa huduma zetu za dawa na usaidizi wa kitaalamu.",
+      sectionTitle: "Tunapatikana wapi",
+      sectionText: "Mahali pauli yapo kwenye Kinyinya, Wilaya ya Gasabo, Jiji la Kigali.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Anwani :",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Alama :",
+      landmarkText: "Karibu na sehemu ya kuegesha magari.",
+      mapLink: "Fungua kwenye Google Maps",
+      mapTitle: "Tupate kwenye Ramani",
+      backHome: "← Rudi Nyumbani"
+    },
+    es: {
+      pageTitle: "Nuestra ubicación",
+      pageIntro: "Encuentre Pharma Luz Ltd y visítenos para servicios farmacéuticos confiables y apoyo profesional.",
+      sectionTitle: "Dónde encontrarnos",
+      sectionText: "Nuestra ubicación está convenientemente situada en Kinyinya, distrito de Gasabo, ciudad de Kigali.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Dirección:",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Referencia:",
+      landmarkText: "Cerca del estacionamiento.",
+      mapLink: "Abrir en Google Maps",
+      mapTitle: "Encuéntranos en el mapa",
+      backHome: "← Volver al inicio"
+    },
+    pt: {
+      pageTitle: "Nossa localização",
+      pageIntro: "Encontre a Pharma Luz Ltd e visite-nos para serviços farmacêuticos confiáveis e apoio profissional.",
+      sectionTitle: "Onde nos encontrar",
+      sectionText: "Nossa localização está convenientemente situada em Kinyinya, distrito de Gasabo, cidade de Kigali.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "Endereço:",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "Referência:",
+      landmarkText: "Perto do estacionamento.",
+      mapLink: "Abrir no Google Maps",
+      mapTitle: "Encontre-nos no mapa",
+      backHome: "← Voltar ao início"
+    },
+    ar: {
+      pageTitle: "موقعنا",
+      pageIntro: "ابحث عن Pharma Luz Ltd و زُرنا للحصول على خدمات صيدلانية موثوقة ودعم مهني.",
+      sectionTitle: "أين نجدنا",
+      sectionText: "يقع موقعنا في كينيينيا، منطقة غاسابو، مدينة كيغالي.",
+      locationName: "Pharma Luz Ltd",
+      addressLabel: "العنوان:",
+      addressLine1: "Murama Cell,",
+      addressLine2: "Kinyinya Sector,",
+      addressLine3: "Gasabo District,",
+      addressLine4: "Kigali City, Rwanda.",
+      landmarkLabel: "علامة مميزة:",
+      landmarkText: "قرب موقف السيارات.",
+      mapLink: "فتح في خرائط جوجل",
+      mapTitle: "اعثر علينا على الخريطة",
+      backHome: "← العودة إلى الرئيسية"
+    }
+  };
+
+  const languageSwitcher = document.getElementById('languageSwitcher');
+
+  function applyLanguage(lang) {
+    const selected = translations[lang] ? lang : 'en';
+    const dict = translations[selected];
+    document.documentElement.lang = selected;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+    if (languageSwitcher) languageSwitcher.value = selected;
+    localStorage.setItem('pharmaLuzLanguage', selected);
+    localStorage.setItem('pharmaLuzSiteLanguage', selected);
+  }
+
+  if (languageSwitcher) {
+    languageSwitcher.addEventListener('change', event => applyLanguage(event.target.value));
+  }
+
+  applyLanguage(localStorage.getItem('pharmaLuzLanguage') || localStorage.getItem('pharmaLuzSiteLanguage') || 'en');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="PL.png">
+  <link rel="shortcut icon" type="image/png" href="PL.png">
+
+  <title>PL Assist | Pharma Luz</title>
+
+  <style>
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pl-bg: #061a23;
+      --pl-bg-soft: #0c2a37;
+      --pl-surface: rgba(9, 25, 34, 0.88);
+      --pl-surface-strong: rgba(8, 20, 29, 0.96);
+      --pl-primary: #4ec6f0;
+      --pl-primary-strong: #2bb5ed;
+      --pl-accent: #7ef0c2;
+      --pl-success: #1fcf8d;
+      --pl-text: #edfaff;
+      --pl-text-soft: #bed6e1;
+      --pl-line: rgba(126, 240, 194, 0.14);
+      --shadow: 0 18px 42px rgba(2, 12, 17, 0.38);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(circle at 15% 10%, rgba(78, 198, 240, 0.12), transparent 26%),
+        radial-gradient(circle at 85% 20%, rgba(126, 240, 194, 0.10), transparent 28%),
+        linear-gradient(180deg, #05181f 0%, #071922 100%);
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+
+      color: var(--pl-text);
+    }
+
+    button,
+    textarea {
+      font-family: inherit;
+    }
+
+    .ai-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .ai-header {
+      min-height: 72px;
+
+      background: rgba(5, 17, 24, 0.8);
+
+      border-bottom: 1px solid rgba(78, 198, 240, 0.15);
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 28px;
+
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      backdrop-filter: blur(18px);
+    }
+
+    .ai-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ai-brand img {
+      width: 46px;
+      height: 46px;
+
+      object-fit: contain;
+
+      background: #ffffff;
+
+      border-radius: 10px;
+
+      padding: 5px;
+
+      box-shadow:
+        0 0 18px rgba(23, 177, 116, 0.22);
+    }
+
+    .ai-brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-brand-name {
+      font-size: 18px;
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #58c8ff,
+          #54e69a
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .ai-brand-status {
+      font-size: 12px;
+      color: #a8bbc7;
+      margin-top: 2px;
+    }
+
+    .status-dot {
+      display: inline-block;
+
+      width: 7px;
+      height: 7px;
+
+      background: #4be58e;
+
+      border-radius: 50%;
+
+      margin-right: 5px;
+
+      box-shadow:
+        0 0 8px rgba(75, 229, 142, 0.8);
+
+      animation: statusPulse 2s infinite;
+    }
+
+    @keyframes statusPulse {
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.55;
+        transform: scale(0.8);
+      }
+    }
+
+
+    /* =========================================================
+       HEADER BUTTONS
+    ========================================================= */
+
+    .ai-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .home-button,
+    .new-chat-top {
+      border: 1px solid rgba(111, 206, 255, 0.28);
+
+      background:
+        rgba(255, 255, 255, 0.06);
+
+      color: #eaf8ff;
+
+      padding: 9px 15px;
+
+      border-radius: 9px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      transition:
+        0.25s ease;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .home-button:hover,
+    .new-chat-top:hover {
+      background:
+        linear-gradient(
+          135deg,
+          #0878c9,
+          #0f8f4f
+        );
+
+      border-color: transparent;
+
+      color: white;
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 6px 18px rgba(8, 120, 201, 0.28);
+    }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .ai-main {
+      flex: 1;
+
+      width: 100%;
+
+      max-width: 1000px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding: 35px 20px 20px;
+
+      position: relative;
+    }
+
+
+    /* =========================================================
+       WELCOME
+    ========================================================= */
+
+    .welcome {
+      text-align: center;
+
+      margin: 20px auto 35px;
+
+      max-width: 680px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(8, 30, 46, 0.9),
+          rgba(6, 38, 49, 0.88)
+        );
+
+      padding: 26px 30px;
+
+      border-radius: 24px;
+
+      border: 1px solid rgba(93, 194, 224, 0.15);
+
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(14px);
+    }
+
+    .welcome-icon {
+      width: 58px;
+      height: 58px;
+
+      margin: 0 auto 15px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0878c9,
+          #0f8f4f
+        );
+
+      color: white;
+
+      font-size: 28px;
+
+      box-shadow:
+        0 0 25px rgba(8, 120, 201, 0.22),
+        0 0 35px rgba(15, 143, 79, 0.15);
+
+      animation: iconGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes iconGlow {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 22px rgba(8, 120, 201, 0.22),
+          0 0 30px rgba(15, 143, 79, 0.12);
+      }
+
+      50% {
+        box-shadow:
+          0 0 32px rgba(8, 120, 201, 0.35),
+          0 0 42px rgba(15, 143, 79, 0.22);
+      }
+    }
+
+    .welcome h1 {
+      margin: 0 0 10px;
+
+      font-size: 30px;
+
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #61cfff,
+          #5ce89a
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .welcome p {
+      margin: 0;
+
+      color: #aebfca;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       SUGGESTIONS
+    ========================================================= */
+
+    .suggestions {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin-bottom: 25px;
+    }
+
+    .suggestion {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(9, 27, 37, 0.92),
+          rgba(8, 34, 43, 0.9)
+        );
+
+      border: 1px solid rgba(120, 181, 203, 0.16);
+
+      border-radius: 16px;
+
+      padding: 16px;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+      color: white;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .suggestion:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(47, 210, 139, 0.48);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(10, 46, 67, 0.96),
+          rgba(5, 62, 43, 0.93)
+        );
+
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.30),
+        0 0 20px rgba(15, 143, 79, 0.08);
+    }
+
+    .suggestion strong {
+      display: block;
+
+      color: #eaf8ff;
+
+      margin-bottom: 5px;
+
+      font-size: 14px;
+    }
+
+    .suggestion span {
+      color: #91a7b3;
+
+      font-size: 13px;
+
+      line-height: 1.4;
+    }
+
+
+    /* =========================================================
+       CHAT MESSAGES
+    ========================================================= */
+
+    .chat-messages {
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 22px;
+
+      padding: 10px 5px 130px;
+
+      min-height: 250px;
+    }
+
+    .chat-message {
+      display: flex;
+
+      width: 100%;
+
+      animation:
+        messageAppear 0.25s ease;
+    }
+
+    @keyframes messageAppear {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-message.bot {
+      justify-content: flex-start;
+    }
+
+    .chat-message.user {
+      justify-content: flex-end;
+    }
+
+    .message-wrapper {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 10px;
+
+      max-width: 78%;
+    }
+
+    .message-icon {
+      width: 32px;
+      height: 32px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #075b91,
+          #087a45
+        );
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 4px 15px rgba(8, 120, 201, 0.16);
+    }
+
+    .message-content {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(10, 31, 45, 0.96),
+          rgba(7, 42, 35, 0.93)
+        );
+
+      border: 1px solid rgba(119, 177, 198, 0.16);
+
+      border-radius: 14px;
+
+      padding: 13px 16px;
+
+      box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.25);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .message-content strong {
+      display: block;
+
+      color: #64caff;
+
+      font-size: 13px;
+
+      margin-bottom: 5px;
+    }
+
+    .message-content p {
+      margin: 0;
+
+      font-size: 15px;
+
+      line-height: 1.65;
+
+      color: #d2e0e7;
+
+      white-space: pre-wrap;
+    }
+
+    .user .message-wrapper {
+      flex-direction: row-reverse;
+    }
+
+    .user .message-icon {
+      background:
+        linear-gradient(
+          135deg,
+          #0f8f4f,
+          #0878c9
+        );
+    }
+
+    .user .message-content {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6, 62, 47, 0.97),
+          rgba(5, 46, 65, 0.95)
+        );
+
+      border-color:
+        rgba(44, 202, 133, 0.23);
+    }
+
+    .user .message-content strong {
+      color: #5ce69a;
+    }
+
+
+    /* =========================================================
+       THINKING
+    ========================================================= */
+
+    .thinking {
+      display: flex;
+
+      align-items: center;
+
+      gap: 5px;
+    }
+
+    .thinking span {
+      width: 6px;
+      height: 6px;
+
+      background: #4bc8ff;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 8px rgba(75, 200, 255, 0.55);
+
+      animation:
+        thinking 1.2s infinite ease-in-out;
+    }
+
+    .thinking span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .thinking span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes thinking {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+
+      30% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
+
+    /* =========================================================
+       INPUT AREA
+    ========================================================= */
+
+    .chat-input-area {
+      position: relative;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(1, 18, 32, 0.98),
+          rgba(3, 39, 59, 0.98),
+          rgba(2, 49, 31, 0.98)
+        );
+
+      background-size: 300% 300%;
+
+      animation:
+        inputGradient 12s ease infinite;
+
+      border-top:
+        1px solid rgba(67, 197, 158, 0.20);
+
+      backdrop-filter: blur(15px);
+
+      padding: 15px 20px 20px;
+
+      z-index: 50;
+
+      box-shadow:
+        0 -8px 30px rgba(0, 0, 0, 0.30);
+    }
+
+    .chat-input-container {
+      max-width: 900px;
+
+      margin: 0 auto;
+
+      background:
+        rgba(8, 25, 37, 0.98);
+
+      border:
+        1px solid rgba(104, 174, 198, 0.25);
+
+      border-radius: 18px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      padding: 8px;
+
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .chat-input-container:focus-within {
+      border-color:
+        rgba(48, 194, 139, 0.48);
+
+      box-shadow:
+        0 5px 30px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(15, 143, 79, 0.08);
+    }
+
+    #chatInput {
+      flex: 1;
+
+      resize: none;
+
+      border: none;
+
+      outline: none;
+
+      padding: 12px;
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      min-height: 45px;
+
+      max-height: 130px;
+
+      color: #e8f3f7;
+
+      background: transparent;
+
+      line-height: 1.5;
+    }
+
+    #chatInput::placeholder {
+      color: #708894;
+    }
+
+    .send-button {
+      width: 46px;
+
+      height: 46px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pl-primary),
+          var(--pl-accent)
+        );
+
+      background-size: 200% 200%;
+
+      animation:
+        inputGradient 6s ease infinite;
+
+      color: #041b24;
+
+      cursor: pointer;
+
+      font-size: 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .send-button:hover {
+      transform: translateY(-2px);
+
+      opacity: 0.95;
+
+      box-shadow:
+        0 7px 20px rgba(8, 120, 201, 0.30);
+    }
+
+    .send-button:disabled {
+      opacity: 0.45;
+
+      cursor: not-allowed;
+
+      transform: none;
+
+      box-shadow: none;
+    }
+
+    .input-note {
+      max-width: 900px;
+
+      margin: 8px auto 0;
+
+      text-align: center;
+
+      color: #718792;
+
+      font-size: 11px;
+    }
+
+    @keyframes inputGradient {
+
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .ai-footer {
+      width: 100% !important;
+
+      flex-shrink: 0;
+
+      margin-top: auto;
+
+      background:
+        linear-gradient(
+          120deg,
+          #021c30,
+          #043d60,
+          #03442f,
+          #075d3b,
+          #021c30
+        ) !important;
+
+      background-size: 300% 300% !important;
+
+      animation:
+        footerGradient 14s ease infinite;
+
+      color: #ffffff !important;
+
+      text-align: center;
+
+      padding: 22px 14px;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      border-top:
+        3px solid #0fae78 !important;
+
+      box-shadow:
+        0 -5px 22px rgba(0, 0, 0, 0.35);
+    }
+
+    .ai-footer p {
+      margin: 4px 0;
+
+      color: #ffffff !important;
+    }
+
+    .ai-footer strong {
+      color: #5ce69a;
+    }
+
+    @keyframes footerGradient {
+
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    /* =========================================================
+       SCROLLBAR
+    ========================================================= */
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #03111d;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background:
+        linear-gradient(
+          #0878c9,
+          #0f8f4f
+        );
+
+      border-radius: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background:
+        linear-gradient(
+          #1597ed,
+          #19ad65
+        );
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .ai-header {
+        padding: 0 15px;
+      }
+
+      .ai-brand-name {
+        font-size: 16px;
+      }
+
+      .ai-header-actions {
+        gap: 6px;
+      }
+
+      .home-button,
+      .new-chat-top {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
+      .ai-main {
+        padding: 25px 15px 20px;
+      }
+
+      .welcome {
+        padding: 22px 20px;
+      }
+
+      .welcome h1 {
+        font-size: 25px;
+      }
+
+      .suggestions {
+        grid-template-columns: 1fr;
+      }
+
+      .message-wrapper {
+        max-width: 92%;
+      }
+
+      .chat-input-area {
+        padding: 10px;
+      }
+
+      .chat-input-container {
+        border-radius: 13px;
+      }
+
+      .ai-footer {
+        padding: 20px 12px;
+      }
+    }
+
+
+    /* =========================================================
+       SMALL PHONES
+    ========================================================= */
+
+    @media (max-width: 450px) {
+
+      .ai-header {
+        min-height: 62px;
+      }
+
+      .ai-brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .ai-brand-name {
+        font-size: 15px;
+      }
+
+      .ai-brand-status {
+        font-size: 10px;
+      }
+
+      .home-button {
+        font-size: 0;
+        width: 39px;
+        height: 36px;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .home-button::before {
+        content: "←";
+        font-size: 20px;
+      }
+
+      .new-chat-top {
+        font-size: 0;
+
+        width: 39px;
+        height: 36px;
+
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .new-chat-top::before {
+        content: "+";
+        font-size: 19px;
+      }
+
+      .welcome {
+        margin-top: 10px;
+        padding: 18px 15px;
+      }
+
+      .welcome-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+
+      .welcome h1 {
+        font-size: 22px;
+      }
+
+      .welcome p {
+        font-size: 14px;
+      }
+
+      .message-wrapper {
+        max-width: 96%;
+      }
+
+      .message-content {
+        padding: 11px 13px;
+      }
+
+      .message-content p {
+        font-size: 14px;
+      }
+
+      .message-icon {
+        width: 29px;
+        height: 29px;
+        font-size: 12px;
+      }
+
+      #chatInput {
+        font-size: 14px;
+      }
+
+      .send-button {
+        width: 41px;
+        height: 41px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="ai-page">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="ai-header">
+
+      <div class="ai-brand">
+
+        <img
+          src="Luz.jpeg"
+          alt="Pharma Luz"
+        >
+
+        <div class="ai-brand-text">
+
+          <div class="ai-brand-name">
+            ✦ PL Assist
+          </div>
+
+          <div class="ai-brand-status">
+
+            <span class="status-dot"></span>
+
+            Pharma Luz AI
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="ai-header-actions">
+
+        <a
+          href="Pharma Luz ltd.html"
+          class="home-button"
+        >
+          ← Home
+        </a>
+
+        <button
+          id="newChatButton"
+          class="new-chat-top"
+          type="button"
+        >
+          + New chat
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="ai-main">
+
+
+      <!-- WELCOME -->
+
+      <div class="welcome">
+
+        <div class="welcome-icon">
+          ✦
+        </div>
+
+        <h1>
+          How can I help you?
+        </h1>
+
+        <p>
+          Welcome to PL Assist. Ask questions about
+          Pharma Luz services, healthcare information,
+          medications, or general support.
+        </p>
+
+      </div>
+
+
+      <!-- ===================================================
+           SUGGESTIONS
+      ==================================================== -->
+
+      <div class="suggestions">
+
+        <button
+          class="suggestion"
+          data-question="What services does Pharma Luz provide?"
+        >
+
+          <strong>
+            Our services
+          </strong>
+
+          <span>
+            Learn about Pharma Luz services
+          </span>
+
+        </button>
+
+
+        <button
+          class="suggestion"
+          data-question="Tell me about Pharma Luz."
+        >
+
+          <strong>
+            About Pharma Luz
+          </strong>
+
+          <span>
+            Learn more about the company
+          </span>
+
+        </button>
+
+
+        <button
+          class="suggestion"
+          data-question="How can I contact Pharma Luz?"
+        >
+
+          <strong>
+            Contact support
+          </strong>
+
+          <span>
+            Find ways to reach us
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <!-- ===================================================
+           CHAT
+      ==================================================== -->
+
+      <div
+        id="chatMessages"
+        class="chat-messages"
+      >
+
+        <div class="chat-message bot">
+
+          <div class="message-wrapper">
+
+            <div class="message-icon">
+              ✦
+            </div>
+
+            <div class="message-content">
+
+              <strong>
+                PL Assist
+              </strong>
+
+              <p>
+                Hello! 👋 I'm PL Assist, the Pharma Luz
+                AI assistant. How can I help you today?
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         INPUT
+    ====================================================== -->
+
+    <div class="chat-input-area">
+
+      <form
+        id="chatForm"
+        class="chat-input-container"
+      >
+
+        <textarea
+          id="chatInput"
+          rows="1"
+          placeholder="Message PL Assist..."
+          autocomplete="off"
+        ></textarea>
+
+
+        <button
+          id="sendButton"
+          type="submit"
+          class="send-button"
+          aria-label="Send message"
+        >
+          ↑
+        </button>
+
+      </form>
+
+
+      <div class="input-note">
+
+        PL Assist can provide general information.
+        For medical decisions, consult a qualified
+        healthcare professional.
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="ai-footer">
+
+      <p>
+        &copy; 2026 Pharma Luz Ltd. All rights reserved.
+      </p>
+
+      <p>
+        Powered by <strong>ARTSA Labs</strong>
+      </p>
+
+    </footer>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    const chatForm =
+      document.getElementById("chatForm");
+
+    const chatInput =
+      document.getElementById("chatInput");
+
+    const chatMessages =
+      document.getElementById("chatMessages");
+
+    const newChatButton =
+      document.getElementById("newChatButton");
+
+    const sendButton =
+      document.getElementById("sendButton");
+
+
+    /* =====================================================
+       ADD MESSAGE
+    ====================================================== */
+
+    function addMessage(role, text) {
+
+      const message =
+        document.createElement("div");
+
+      message.className =
+        `chat-message ${role}`;
+
+
+      const wrapper =
+        document.createElement("div");
+
+      wrapper.className =
+        "message-wrapper";
+
+
+      const icon =
+        document.createElement("div");
+
+      icon.className =
+        "message-icon";
+
+      icon.textContent =
+        role === "user"
+          ? "You"
+          : "✦";
+
+
+      const content =
+        document.createElement("div");
+
+      content.className =
+        "message-content";
+
+
+      const name =
+        document.createElement("strong");
+
+      name.textContent =
+        role === "user"
+          ? "You"
+          : "PL Assist";
+
+
+      const paragraph =
+        document.createElement("p");
+
+      paragraph.textContent =
+        text;
+
+
+      content.appendChild(name);
+
+      content.appendChild(paragraph);
+
+      wrapper.appendChild(icon);
+
+      wrapper.appendChild(content);
+
+      message.appendChild(wrapper);
+
+      chatMessages.appendChild(message);
+
+
+      chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+
+      return message;
+    }
+
+
+    /* =====================================================
+       THINKING MESSAGE
+    ====================================================== */
+
+    function addThinkingMessage() {
+
+      const message =
+        document.createElement("div");
+
+      message.className =
+        "chat-message bot";
+
+
+      message.innerHTML = `
+
+        <div class="message-wrapper">
+
+          <div class="message-icon">
+            ✦
+          </div>
+
+          <div class="message-content">
+
+            <strong>
+              PL Assist
+            </strong>
+
+            <p class="thinking">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </p>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      chatMessages.appendChild(message);
+
+
+      chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+
+      return message;
+    }
+
+
+    /* =====================================================
+       CONNECT TO PHARMA LUZ SERVER
+    ====================================================== */
+
+    async function generateResponse(text) {
+
+      try {
+
+        const response =
+          await fetch(
+            "http://localhost:3000/chat",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body: JSON.stringify({
+                message: text
+              })
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            `Server returned ${response.status}`
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          data.success === false
+        ) {
+
+          throw new Error(
+            data.error ||
+            `Server returned ${response.status}`
+          );
+
+        }
+
+
+        if (!data.reply) {
+
+          throw new Error(
+            "No reply received from server"
+          );
+
+        }
+
+
+        return data.reply;
+
+
+      } catch (error) {
+
+        console.error(
+          "PL Assist connection error:",
+          error
+        );
+
+
+        return (
+          "I'm having trouble connecting to " +
+          "PL Assist right now. Please make sure " +
+          "the Pharma Luz AI server is running."
+        );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       SEND MESSAGE
+    ====================================================== */
+
+    chatForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        const text =
+          chatInput.value.trim();
+
+
+        if (!text) return;
+
+
+        addMessage(
+          "user",
+          text
+        );
+
+
+        chatInput.value = "";
+
+        chatInput.style.height =
+          "45px";
+
+
+        sendButton.disabled =
+          true;
+
+
+        const thinkingMessage =
+          addThinkingMessage();
+
+
+        const response =
+          await generateResponse(text);
+
+
+        thinkingMessage.remove();
+
+
+        addMessage(
+          "bot",
+          response
+        );
+
+
+        sendButton.disabled =
+          false;
+
+
+        chatInput.focus();
+
+      }
+    );
+
+
+    /* =====================================================
+       ENTER TO SEND
+    ====================================================== */
+
+    chatInput.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Enter" &&
+          !event.shiftKey
+        ) {
+
+          event.preventDefault();
+
+
+          chatForm.dispatchEvent(
+            new Event("submit")
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       AUTO RESIZE
+    ====================================================== */
+
+    chatInput.addEventListener(
+      "input",
+      function() {
+
+        this.style.height =
+          "auto";
+
+
+        this.style.height =
+          Math.min(
+            this.scrollHeight,
+            130
+          ) + "px";
+
+      }
+    );
+
+
+    /* =====================================================
+       SUGGESTION BUTTONS
+    ====================================================== */
+
+    document
+      .querySelectorAll(".suggestion")
+      .forEach(
+        function(button) {
+
+          button.addEventListener(
+            "click",
+            function() {
+
+              chatInput.value =
+                button.dataset.question;
+
+
+              chatInput.focus();
+
+
+              chatInput.style.height =
+                "auto";
+
+
+              chatInput.style.height =
+                Math.min(
+                  chatInput.scrollHeight,
+                  130
+                ) + "px";
+
+            }
+          );
+
+        }
+      );
+
+
+    /* =====================================================
+       NEW CHAT
+    ====================================================== */
+
+    newChatButton.addEventListener(
+      "click",
+      function() {
+
+        chatMessages.innerHTML = "";
+
+
+        addMessage(
+          "bot",
+          "Hello! 👋 Your new chat is ready. How can I help you?"
+        );
+
+
+        chatInput.value = "";
+
+
+        chatInput.style.height =
+          "45px";
+
+
+        chatInput.focus();
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>
